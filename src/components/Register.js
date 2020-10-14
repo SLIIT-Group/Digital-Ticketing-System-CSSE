@@ -27,7 +27,7 @@ function Register() {
             <CardHeader
               style={{
                 color: '#f2f2f2',
-                backgroundColor: '#1976D2',
+                backgroundColor: '#292b2c',
                 textAlign: 'center',
                 fontSize: '1.2em',
               }}
@@ -106,7 +106,7 @@ function Register() {
                 padding: ' 0px',
                 color: '#f2f2f2',
                 fontSize: '0.8em',
-                backgroundColor: '#1976D2',
+                backgroundColor: '#292b2c',
                 textAlign: 'center',
               }}
             >

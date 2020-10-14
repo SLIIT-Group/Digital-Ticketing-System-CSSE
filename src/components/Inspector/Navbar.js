@@ -31,13 +31,25 @@ const Example = (props) => {
               </Button></NavLink>
             </NavItem>
             <NavItem>
-              <NavLink href='/user' className="justify-content-center text-center">User</NavLink>
+              <NavLink href='/user' className="justify-content-center text-center"><Button className='btn btn-warning'
+                  style={{width: '50%' }}
+              >
+                User
+              </Button></NavLink>
             </NavItem>
             <NavItem>
-              <NavLink href='/manager' className="justify-content-center text-center">Manager</NavLink>
+              <NavLink href='/manager' className="justify-content-center text-center"><Button className='btn btn-warning'
+                  style={{ width: '50%' }}
+              >
+                Manager
+              </Button></NavLink>
             </NavItem>
             <NavItem>
-              <NavLink href='/' className="justify-content-center text-center">Logout</NavLink>
+              <NavLink href='/' className="justify-content-center text-center"><Button className='btn btn-warning'
+                  style={{width: '50%' }}
+              >
+                Logout
+              </Button></NavLink>
             </NavItem>
           </Nav>
         </Collapse>
