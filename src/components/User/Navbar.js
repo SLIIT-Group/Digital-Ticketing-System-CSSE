@@ -6,7 +6,7 @@ import {
   NavbarBrand,
   Nav,
   NavItem,
-  NavLink,
+  NavLink, Button,
 } from 'reactstrap';
 
 const Example = (props) => {
@@ -17,23 +17,27 @@ const Example = (props) => {
   return (
     <div>
       <Navbar color='dark' dark>
-        <NavbarBrand href='/' className='mr-auto'>
-          Digital Ticketing System
+        <NavbarBrand href='/' className='mr-auto font-weight-bold text-warning'>
+          E-TickeT !
         </NavbarBrand>
         <NavbarToggler onClick={toggleNavbar} className='mr-2' />
         <Collapse isOpen={!collapsed} navbar>
           <Nav navbar>
-            <NavItem>
-              <NavLink href='/user'>User</NavLink>
+            <NavItem className="justify-content-center">
+              <NavLink href='/user' className="justify-content-center text-center"><Button
+                  style={{ backgroundColor: '#f0ad4e', width: '100%' }}
+              >
+                Passenger ID :
+              </Button></NavLink>
             </NavItem>
             <NavItem>
-              <NavLink href='/manager'>Manager</NavLink>
+              <NavLink href='/manager' className="justify-content-center text-center">Manager</NavLink>
             </NavItem>
             <NavItem>
-              <NavLink href='/inspector'>Inspector</NavLink>
+              <NavLink href='/inspector' className="justify-content-center text-center">Inspector</NavLink>
             </NavItem>
             <NavItem>
-              <NavLink href='/'>Logout</NavLink>
+              <NavLink href='/' className="justify-content-center text-center">Logout</NavLink>
             </NavItem>
           </Nav>
         </Collapse>

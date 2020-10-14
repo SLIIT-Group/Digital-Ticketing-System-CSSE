@@ -54,13 +54,15 @@ function Login() {
                       placeholder='Enter Password'
                     />
                   </FormGroup>
+                  <NavLink to='/user'>
                   <div style={{ display: 'flex', justifyContent: 'center' }}>
-                    <NavLink to='/user'>
-                      <Button style={{ backgroundColor: '#4CAF50' }}>
-                        Login
-                      </Button>
-                    </NavLink>
+                    <Button
+                        style={{ backgroundColor: '#f0ad4e', width: '100%' }}
+                    >
+                      Login
+                    </Button>
                   </div>
+                  </NavLink>
                 </Form>
               </CardText>
             </CardBody>

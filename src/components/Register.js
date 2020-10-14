@@ -93,7 +93,7 @@ function Register() {
                   </FormGroup>
                   <div style={{ display: 'flex', justifyContent: 'center' }}>
                     <Button
-                      style={{ backgroundColor: '#4CAF50', width: '40%' }}
+                      style={{ backgroundColor: '#f0ad4e', width: '100%' }}
                     >
                       Register
                     </Button>
