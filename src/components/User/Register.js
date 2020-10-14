@@ -56,24 +56,6 @@ function Register() {
                     />
                   </FormGroup>
                   <FormGroup>
-                    <Label for='exampleEmail'>NIC</Label>
-                    <Input
-                      type='text'
-                      name='nic'
-                      id='exampleNIC'
-                      placeholder='Enter NIC'
-                    />
-                  </FormGroup>
-                  <FormGroup>
-                    <Label for='exampleEmail'>Phone No.</Label>
-                    <Input
-                      type='text'
-                      name='phone'
-                      id='examplePhone'
-                      placeholder='Enter Phone No'
-                    />
-                  </FormGroup>
-                  <FormGroup>
                     <Label for='examplePassword'>Password</Label>
                     <Input
                       type='password'
