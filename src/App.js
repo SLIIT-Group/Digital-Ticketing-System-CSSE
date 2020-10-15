@@ -9,6 +9,8 @@ import UserHome from './components/User/UserHome';
 import ManagerHome from './components/Manager/ManagerHome';
 import InspectorHome from './components/Inspector/InspectorHome';
 import disableBrowserBackButton from 'disable-browser-back-navigation';
+import ViewTokens from './components/Inspector/ViewTokens';
+import PassengerDetails from './components/Inspector/PassengerDetails';
 
 function App() {
   useEffect(() => {
@@ -24,6 +26,16 @@ function App() {
             <Route exact path='/user' component={UserHome}></Route>
             <Route exact path='/manager' component={ManagerHome}></Route>
             <Route exact path='/inspector' component={InspectorHome}></Route>
+            <Route
+              exact
+              path='/inspector/viewtokens'
+              component={ViewTokens}
+            ></Route>
+            <Route
+              exact
+              path='/inspector/passengers'
+              component={PassengerDetails}
+            ></Route>
             <Route exact path='/' component={Login} />
           </div>
         </Switch>
