@@ -31,8 +31,17 @@ function UserHome() {
             xs={{ size: 6, offset: 3 }}
             md={{ size: 6, offset: 3 }}
           >
-            <Button color='primary' size='lg' block>
+            <Button href='/addCredit' color='primary' size='lg' block>
               Add Credit
+            </Button>
+          </Col>
+          <Col
+              style={{ marginBottom: '2em' }}
+              xs={{ size: 6, offset: 3 }}
+              md={{ size: 6, offset: 3 }}
+          >
+            <Button href='/payFares' color='primary' size='lg' block>
+              Pay fares
             </Button>
           </Col>
         </Row>
