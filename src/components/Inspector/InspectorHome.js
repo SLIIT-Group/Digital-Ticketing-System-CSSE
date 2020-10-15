@@ -1,6 +1,7 @@
 import React from 'react';
 import { Container, Row, Col, Button } from 'reactstrap';
-import NavBar from '../Navbar';
+import NavBar from './Navbar';
+import { Link } from 'react-router-dom';
 
 function InspectorHome() {
   return (
@@ -13,18 +14,22 @@ function InspectorHome() {
             xs={{ size: 6, offset: 3 }}
             md={{ size: 6, offset: 3 }}
           >
-            <Button color='primary' size='lg' block>
-              View Tokens
-            </Button>
+            <Link style={{ textDecoration: 'none' }} to='/inspector/viewtokens'>
+              <Button color='primary' size='lg' block>
+                View Tokens
+              </Button>
+            </Link>
           </Col>
           <Col
             style={{ marginBottom: '2em' }}
             xs={{ size: 6, offset: 3 }}
             md={{ size: 6, offset: 3 }}
           >
-            <Button color='primary' size='lg' block>
-              Passenger Details
-            </Button>
+            <Link style={{ textDecoration: 'none' }} to='/inspector/passengers'>
+              <Button color='primary' size='lg' block>
+                Passenger Details
+              </Button>
+            </Link>
           </Col>
         </Row>
       </Container>

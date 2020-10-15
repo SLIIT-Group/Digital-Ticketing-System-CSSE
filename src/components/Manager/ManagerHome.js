@@ -1,6 +1,6 @@
 import React from 'react';
 import { Container, Row, Col, Button } from 'reactstrap';
-import NavBar from '../Navbar';
+import NavBar from './Navbar';
 
 function ManagerHome() {
   return (
