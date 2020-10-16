@@ -10,15 +10,7 @@ import TableContainer from "@material-ui/core/TableContainer";
 import TableHead from "@material-ui/core/TableHead";
 import TableRow from "@material-ui/core/TableRow";
 import Paper from "@material-ui/core/Paper";
-import DeleteIcon from "@material-ui/icons/Delete";
-import EditIcon from "@material-ui/icons/Edit";
-import {Link} from "react-router-dom";
-import Token from "../Manager/inspectorRow";
 
-// import axios from "axios";
-// import { Link } from "react-router-dom";
-// import EditIcon from "@material-ui/icons/Edit";
-// import DeleteIcon from "@material-ui/icons/Delete";
 const axios = require("axios");
 
 const StyledTableRow = withStyles((theme) => ({
@@ -54,7 +46,6 @@ export default function ViewInspectorDetails() {
       .get("http://localhost:5000/api/ins/inspectors")
       .then((response) => {
         setData(response.data);
-        // setSearchResults(response.data);
       })
       .catch(function (error) {
         console.log(error);
