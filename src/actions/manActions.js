@@ -7,17 +7,17 @@ import axios from 'axios';
 
 /////////////////////////////////////////////////////////////////////////////
 
-export const login = ({pasEmail , pasPassword}) => dispatch => {
+export const login = ({manEmail , manPassword}) => dispatch => {
     const config = {
         headers: {
             'Content-Type' : 'application/json'
         }
     }
-    const body = JSON.stringify({pasEmail, pasPassword});
+    const body = JSON.stringify({manEmail, manPassword});
 
 
 
-    axios.post('http://localhost:5000/api/pas/login', body, config).then(res => dispatch({
+    axios.post('http://localhost:5000/api/man/login', body, config).then(res => dispatch({
         type:LOGIN_SUCCESS,
         payload: res.data
     })).catch(error => {
@@ -34,7 +34,7 @@ export const login = ({pasEmail , pasPassword}) => dispatch => {
 export const loadUser = () => (dispatch, getState) => {
     dispatch ({type: USER_LOADING});
 
-    axios.get('http://localhost:5000/api/pas/token', tokenConfig(getState)).then(res => dispatch({
+    axios.get('http://localhost:5000/api/man/token', tokenConfig(getState)).then(res => dispatch({
         type: USER_LOADED,
         payload: res.data
     })).catch(error => {
@@ -45,17 +45,17 @@ export const loadUser = () => (dispatch, getState) => {
 }
 
 /////////////////////////////////////////////////////////////////////////////////////////
-export const register = ({pasUserName, pasEmail, pasPassword}) => dispatch => {
+export const register = ({manUserName, manEmail, manPassword}) => dispatch => {
     const config = {
         headers: {
             'Content-Type' : 'application/json'
         }
     }
-    const body = JSON.stringify({pasUserName,pasEmail,pasPassword});
+    const body = JSON.stringify({manUserName,manEmail,manPassword});
 
 
 
-    axios.post('http://localhost:5000/api/pas/register', body, config).then(res => dispatch({
+    axios.post('http://localhost:5000/api/man/register', body, config).then(res => dispatch({
         type:REGISTER_SUCCESS,
         payload: res.data
     })).catch(error => {
@@ -78,7 +78,7 @@ export const logout = () => {
 
 //////////////////////////////////////////////////////////////////////
 export const tokenConfig = (getState) => {
-    const token = getState().pas.token;
+    const token = getState().man.token;
     const config = {
         headers : {
             "Content-type": "application/json"
@@ -86,7 +86,7 @@ export const tokenConfig = (getState) => {
     }
 
     if(token){
-        config.headers['ticketApp_auth'] = token;
+        config.headers['ticketManager_auth'] = token;
     }
     return config;
 }
