@@ -43,7 +43,7 @@ export default function ViewTImeTableDetails() {
 
   useEffect(() => {
     axios
-      .get("http://localhost:5000/api/man/timeTable")
+      .get("http://localhost:5000/api/timetable/timeTable")
       .then((response) => {
         setData(response.data);
       })
@@ -54,12 +54,12 @@ export default function ViewTImeTableDetails() {
 
   const deleteData = (id) => {
     axios
-      .delete(`http://localhost:5000/api/man/timeTable/${id}`)
+      .delete(`http://localhost:5000/api/timetable/timeTable/${id}`)
       .then((res) => {
         swal("successfull", "Data Successfully removed", "success");
 
         axios
-          .get("http://localhost:5000/api/man/timeTable")
+          .get("http://localhost:5000/api/timetable/timeTable")
           .then((response) => {
             setData(response.data);
           })
@@ -132,7 +132,6 @@ export default function ViewTImeTableDetails() {
                         <DeleteIcon
                           onClick={() => {
                             deleteData(row._id);
-                            console.log(row._id);
                           }}
                         >
                           {" "}

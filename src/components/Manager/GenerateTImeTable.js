@@ -106,7 +106,7 @@ function GenerateTImeTable() {
           unitPrice:price
         }),
       };
-      fetch("http://localhost:5000/api/man/timeTable", requestOptions)
+      fetch("http://localhost:5000/api/timetable/timeTable", requestOptions)
         .then((response) => response.json())
         .then((data) => {
           if (data["success"]) {
