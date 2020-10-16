@@ -7,13 +7,13 @@ import axios from 'axios';
 
 /////////////////////////////////////////////////////////////////////////////
 
-export const login = ({pasUserName , pasPassword}) => dispatch => {
+export const login = ({pasEmail , pasPassword}) => dispatch => {
     const config = {
         headers: {
             'Content-Type' : 'application/json'
         }
     }
-    const body = JSON.stringify({pasUserName, pasPassword});
+    const body = JSON.stringify({pasEmail, pasPassword});
 
 
 

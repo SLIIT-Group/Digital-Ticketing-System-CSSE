@@ -1,5 +1,10 @@
-import React from 'react';
-
+import React, {useEffect, useRef, useState} from 'react';
+import {connect} from 'react-redux';
+import PropTypes from 'prop-types';
+import {login} from "../../actions/pasActions";
+import {clearErrors} from "../../actions/errorActions";
+import {Alert} from 'reactstrap';
+import swal from "sweetalert";
 import {
   Container,
   Row,
@@ -17,7 +22,70 @@ import {
 } from 'reactstrap';
 import { NavLink } from 'react-router-dom';
 
-function Login() {
+function Login(props) {
+  let propTypes = {
+    isAuthenticated: PropTypes.bool,
+    error : PropTypes.object.isRequired,
+    login: PropTypes.func.isRequired,
+    clearErrors : PropTypes.func.isRequired
+  }
+
+  const [email, setEmail] = useState('');
+  const [password, setPassword] = useState('');
+  const [msg, setMsg] = useState('');
+
+  const onChangeEmail = (e) => {
+    setEmail(e.target.value);
+  };
+
+  const onChangePassword = (e) => {
+    setPassword(e.target.value);
+  };
+
+  const prevProps = useRef();
+  useEffect(() => {
+    if(props.error !== prevProps.error){
+      if(props.error.id === 'LOGIN_FAIL'){
+        setMsg(props.error.msg.msg);
+      } else {
+        setMsg(null );
+      }
+    }
+
+
+    if (msg) {
+      swal("Unsuccessful", msg, "error");
+      setMsg(null );
+    }
+
+    if (props.isAuthenticated) {
+      loginClose();
+    }
+  });
+
+  const loginClose = () => {
+    clearErrors();
+    setEmail('');
+    setPassword('');
+    setMsg(null);
+    props.history.push('/user');
+  }
+
+  const onSubmit = (e) => {
+    e.preventDefault();
+
+    const existUser = {
+      pasEmail: email,
+      pasPassword : password,
+    };
+
+    props.login(existUser);
+
+    setEmail('');
+    setPassword('');
+    setMsg(null);
+  };
+
   return (
     <Container>
       <Row style={{ marginTop: '8em' }}>
@@ -42,6 +110,8 @@ function Login() {
                       type='email'
                       name='email'
                       id='exampleEmail'
+                      value={email}
+                      onChange={onChangeEmail}
                       placeholder='Enter Email'
                     />
                   </FormGroup>
@@ -51,6 +121,8 @@ function Login() {
                       type='password'
                       name='password'
                       id='examplePassword'
+                      value={password}
+                      onChange={onChangePassword}
                       placeholder='Enter Password'
                     />
                   </FormGroup>
@@ -58,6 +130,7 @@ function Login() {
                     <div style={{ display: 'flex', justifyContent: 'center' }}>
                       <Button
                         style={{ backgroundColor: '#f0ad4e', width: '100%' }}
+                        onClick={onSubmit}
                       >
                         Login
                       </Button>
@@ -90,7 +163,7 @@ function Login() {
 }
 
 const mapStateToProps = state => ({
-  isAuthenticated: state.cus.isAuthenticated,
+  isAuthenticated: state.pas.isAuthenticated,
   error : state.error
 });
 
