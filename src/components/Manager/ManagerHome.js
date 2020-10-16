@@ -31,7 +31,7 @@ function ManagerHome() {
             xs={{ size: 6, offset: 3 }}
             md={{ size: 6, offset: 3 }}
           >
-            <Button color='primary' size='lg' block>
+            <Button href='/stats' color='primary' size='lg' block>
               Statistical Report
             </Button>
           </Col>
