@@ -1,4 +1,7 @@
-import React, {useState} from 'react';
+import React, {useEffect, useState} from 'react';
+import axios from "axios";
+import { BrowserRouter as Router, Route, Link, Switch } from "react-router-dom";
+import swal from "sweetalert";
 
 import {
     Container,
@@ -35,6 +38,29 @@ const paymentMethod = [
 ];
 
 function AddCredit() {
+    useEffect(() => {
+
+    })
+
+    const updateCredit = () => {
+        const req = {
+            pasUserName: 'abc',
+            pasEmail: 'abc',
+            pasPassword: 'abc',
+            pasAmount: 100,
+        };
+
+        let id = '5f88a946963f79b26e909f06';
+        axios.post('http://localhost:5000/api/passenger/updateCredit/' +id, req)
+            .then((res) => {
+                if(res.data == 'Update complete'){
+                    swal("Successful", "Session details updated", "success");
+                }else{
+                    swal("Unsuccessful", "Error while updating details", "error");
+                }
+            });
+    };
+
     return (
         <Container>
             <Row style={{ marginTop: '8em' }}>
@@ -54,7 +80,16 @@ function AddCredit() {
                             <CardText>
                                 <Form>
                                     <FormGroup>
-                                        <Label for='exampleEmail'>Enter Amout</Label>
+                                        <Label for='exampleEmail'>Current Balance</Label>
+                                        <Input
+                                            type='text'
+                                            name='cbalance'
+                                            id='cbalance'
+                                            placeholder='Rs.'
+                                        />
+                                    </FormGroup>
+                                    <FormGroup>
+                                        <Label for='exampleEmail'>Recharging Amout</Label>
                                         <Input
                                             type='text'
                                             name='amount'
@@ -82,7 +117,7 @@ function AddCredit() {
                                     </FormGroup>
                                     <div style={{ display: 'flex', justifyContent: 'center' }}>
                                         <NavLink to='/user'>
-                                            <Button style={{ backgroundColor: '#4CAF50' }}>
+                                            <Button style={{ backgroundColor: '#4CAF50' }} onClick={updateCredit}>
                                                 Proceed
                                             </Button>
                                         </NavLink>

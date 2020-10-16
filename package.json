@@ -46,9 +46,9 @@
   "proxy": "http://localhost:3000",
   "devDependencies": {
     "@material-ui/core": "^4.11.0",
+    "sweetalert": "^2.1.2",
     "disable-browser-back-navigation": "^0.1.0",
     "prop-types": "^15.7.2",
-    "reactstrap": "^8.4.1",
-    "sweetalert": "^2.1.2"
+    "reactstrap": "^8.4.1"
   }
 }
