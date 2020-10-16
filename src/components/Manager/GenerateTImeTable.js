@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import NavBar from './Navbar';
+import NavBar from "./Navbar";
 
 import {
   Container,
@@ -90,23 +90,22 @@ function GenerateTImeTable() {
                       <Input type="number" />
                     </FormGroup>
                     <FormGroup>
-                    <Label>Starting From</Label>
-                    <TextField
-                     
-                      select
-                      label="Starting From"
-                      // value={faculty}
-                      // onChange={handleFacultyChange}
-                      variant="outlined"
-                      fullWidth
-                    >
-                      {paymentMethod.map((option) => (
-                        <MenuItem key={option.value} value={option.value}>
-                          {option.value}
-                        </MenuItem>
-                      ))}
-                    </TextField>
-                  </FormGroup>
+                      <Label>Starting From</Label>
+                      <TextField
+                        select
+                        label="Starting From"
+                        // value={faculty}
+                        // onChange={handleFacultyChange}
+                        variant="outlined"
+                        fullWidth
+                      >
+                        {paymentMethod.map((option) => (
+                          <MenuItem key={option.value} value={option.value}>
+                            {option.value}
+                          </MenuItem>
+                        ))}
+                      </TextField>
+                    </FormGroup>
                     <div style={{ display: "flex", justifyContent: "center" }}>
                       <NavLink to="/user">
                         <Button style={{ backgroundColor: "#f0ad4e" }}>
