@@ -41,12 +41,8 @@
       "last 1 safari version"
     ]
   },
-<<<<<<< HEAD
-  "proxy": "http://localhost:3000"
-=======
   "proxy": "http://localhost:3000",
   "devDependencies": {
     "@material-ui/core": "^4.11.0"
   }
->>>>>>> e519bbd95b5d8eb9c8b69b8f9244cd14569327f0
 }
