@@ -84,11 +84,12 @@ function GenerateTImeTable() {
     ) {
       swal("sorry", "Arrival time should be greater than start time", "error");
     } else if (
-      parseFloat(startTime.split(":")[0]) === parseFloat(endTime.split(":")[0]) && parseFloat(startTime.split(":")[1]) > parseFloat(endTime.split(":")[1])
+      parseFloat(startTime.split(":")[0]) ===
+        parseFloat(endTime.split(":")[0]) &&
+      parseFloat(startTime.split(":")[1]) > parseFloat(endTime.split(":")[1])
     ) {
       swal("sorry", "Arrival time should be greater than start time", "error");
-    } 
-    else if (startTime === endTime) {
+    } else if (startTime === endTime) {
       swal("sorry", "Times should be different", "error");
     } else {
       const requestOptions = {
