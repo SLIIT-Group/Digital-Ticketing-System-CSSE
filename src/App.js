@@ -21,6 +21,8 @@ import InspectorLogin from './components/Inspector/Login';
 import AddInspector from './components/Inspector/AddInspector';
 import AccountDetails from './components/User/AccountDetails';
 import ViewTImeTableDetails from './components/Manager/ViewTImeTableDetails';
+import ViewPassenger from './components/Manager/ViewPassenger';
+import ViewInspectorDetails from './components/Manager/ViewInspectorDetails';
 
 function App() {
   useEffect(() => {
@@ -65,6 +67,10 @@ function App() {
             <Route exact path='/inspector/login' component={InspectorLogin} />
             <Route exact path='/inspector/add' component={AddInspector} />
             <Route exact path='/viewTimeTable' component={ViewTImeTableDetails}></Route>
+            <Route exact path='/viewPassenger' component={ViewPassenger}></Route>
+            <Route exact path='/viewInspectors' component={ViewInspectorDetails}></Route>
+
+
 
 
           </div>

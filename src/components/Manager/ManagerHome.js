@@ -41,7 +41,7 @@ function ManagerHome() {
               xs={{ size: 6, offset: 3 }}
               md={{ size: 6, offset: 3 }}
           >
-            <Button color='primary' size='lg' block>
+            <Button  href='/viewInspectors' color='primary' size='lg' block>
               View Inspectors
             </Button>
           </Col>
@@ -50,7 +50,7 @@ function ManagerHome() {
             xs={{ size: 6, offset: 3 }}
             md={{ size: 6, offset: 3 }}
           >
-            <Button color='primary' size='lg' block>
+            <Button href='/viewPassenger' color='primary' size='lg' block>
               View Users
             </Button>
           </Col>
