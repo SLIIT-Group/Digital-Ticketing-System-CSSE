@@ -54,20 +54,11 @@ function PayFares() {
                             <CardText>
                                 <Form>
                                     <FormGroup>
-                                        <Label for='exampleEmail'>Enter Amout</Label>
-                                        <Input
-                                            type='text'
-                                            name='amount'
-                                            id='amount'
-                                            placeholder='Rs.'
-                                        />
-                                    </FormGroup>
-                                    <FormGroup>
-                                        <Label for='examplePassword'>Payment Method</Label>
+                                        <Label for='examplePassword'>From</Label>
                                         <TextField
-                                            id="paymentMethodId"
+                                            id="fromId"
                                             select
-                                            label="Payment Method"
+                                            label="From"
                                             // value={faculty}
                                             // onChange={handleFacultyChange}
                                             variant="filled"
@@ -80,10 +71,46 @@ function PayFares() {
                                             ))}
                                         </TextField>
                                     </FormGroup>
+                                    <FormGroup>
+                                        <Label for='examplePassword'>To</Label>
+                                        <TextField
+                                            id="toId"
+                                            select
+                                            label="To"
+                                            // value={faculty}
+                                            // onChange={handleFacultyChange}
+                                            variant="filled"
+                                            fullWidth
+                                        >
+                                            {paymentMethod.map((option) => (
+                                                <MenuItem key={option.value} value={option.value}>
+                                                    {option.value}
+                                                </MenuItem>
+                                            ))}
+                                        </TextField>
+                                    </FormGroup>
+                                    <FormGroup>
+                                        <Label for='exampleEmail'>No of KM</Label>
+                                        <Input
+                                            type='text'
+                                            name='nokm'
+                                            id='nokm'
+                                            placeholder='KM.'
+                                        />
+                                    </FormGroup>
+                                    <FormGroup>
+                                        <Label for='exampleEmail'>Fee</Label>
+                                        <Input
+                                            type='text'
+                                            name='fee'
+                                            id='fee'
+                                            placeholder='Rs.'
+                                        />
+                                    </FormGroup>
                                     <div style={{ display: 'flex', justifyContent: 'center' }}>
                                         <NavLink to='/user'>
                                             <Button style={{ backgroundColor: '#4CAF50' }}>
-                                                Proceed
+                                                Pay
                                             </Button>
                                         </NavLink>
                                     </div>
