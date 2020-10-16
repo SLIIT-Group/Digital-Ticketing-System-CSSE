@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import NavBar from "./Navbar";
 import swal from "sweetalert";
-import { Container, Row, Col } from "reactstrap";
+import {Container, Row, Col, Toast, ToastHeader, ToastBody, Button, CardColumns} from "reactstrap";
 import { withStyles, makeStyles } from "@material-ui/core/styles";
 import Table from "@material-ui/core/Table";
 import TableBody from "@material-ui/core/TableBody";
@@ -12,6 +12,8 @@ import TableRow from "@material-ui/core/TableRow";
 import Paper from "@material-ui/core/Paper";
 import DeleteIcon from "@material-ui/icons/Delete";
 import EditIcon from "@material-ui/icons/Edit";
+import {Link} from "react-router-dom";
+import Token from "../Manager/inspectorRow";
 
 // import axios from "axios";
 // import { Link } from "react-router-dom";
@@ -62,38 +64,42 @@ export default function ViewInspectorDetails() {
   return (
     <React.Fragment>
       <NavBar></NavBar>
-      <Container>
-        <Row style={{ marginTop: "4em", marginBottom: "4em" }}>
-          <Col sm="12" md={{ size: 12, offset: 0 }}>
-            <TableContainer component={Paper}>
-              <Table className={classes.table} aria-label="customized table">
-                <TableHead>
-                  <TableRow>
-                    <StyledTableCell align="center">UserName</StyledTableCell>
-
-                    <StyledTableCell align="center">Email</StyledTableCell>
-                  </TableRow>
-                </TableHead>
-                <TableBody>
-                  {data.map((row) => (
-                    <StyledTableRow key={row._id}>
-                      <StyledTableCell
-                        component="th"
-                        scope="row"
-                        align="center"
-                      >
-                        {row.insUserName}
-                      </StyledTableCell>
-                      <StyledTableCell align="center">
-                        {row.insEmail}
-                      </StyledTableCell>
-                    </StyledTableRow>
-                  ))}
-                </TableBody>
-              </Table>
-            </TableContainer>
-          </Col>
-        </Row>
+      <Container style={{ margin: '20px 0px', overflowX: 'hidden' }}>
+        {setData.length === 0 ? (
+            <div className='p-3 my-2 rounded'>
+              <Toast>
+                <ToastHeader style={{ color: '#f4f4f4' }} className='bg-warning'>
+                  No results found
+                </ToastHeader>
+                <ToastBody>
+                  Please re-check your filter parameters
+                  <Link
+                      style={{ textDecoration: 'none' }}
+                      to='/inspector/tokenfilter'
+                  >
+                    <Button
+                        small
+                        style={{
+                          padding: '0px',
+                          marginTop: '5px',
+                          backgroundColor: '#f0ad4e',
+                          border: '3px',
+                          width: '30%',
+                        }}
+                    >
+                      Return
+                    </Button>
+                  </Link>
+                </ToastBody>
+              </Toast>
+            </div>
+        ) : (
+            <CardColumns>
+              {data.map((token) => (
+                  <Token token={token}></Token>
+              ))}
+            </CardColumns>
+        )}
       </Container>
     </React.Fragment>
   );
