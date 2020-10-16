@@ -43,7 +43,6 @@ const paymentMethod = [
 function AddCredit(props) {
     useEffect(() => {
         if(props.pas.user) {
-            console.log(props);
             setId(props.pas.user._id);
         }
     })
