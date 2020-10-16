@@ -20,6 +20,7 @@ import PropTypes from "prop-types";
 import {register} from "../../actions/manActions";
 import { clearErrors } from "../../actions/errorActions";
 import swal from "sweetalert";
+import axios from "axios";
 
 
 /*propTypes = {
@@ -43,6 +44,8 @@ function Register(props) {
   const [confirmPassword, setConfirmPassword] = useState('');
   const [msg, setMsg] = useState('');
   const [msgTop, setMsgTop] = useState('');
+  const [pin, setPin] = useState('');
+  const [managerPin, setManagerPin] = useState("");
 
   const onChangeName = (e) => {
     setName(e.target.value);
@@ -67,6 +70,20 @@ function Register(props) {
       setMsgTop('');
 
     }
+  };
+
+  useEffect(() => {
+    axios
+
+        .get("http://localhost:5000/api/pin/byID/5f8960f931e9acda8a1021a1")
+        .then((res) => {
+          setManagerPin(res.data.managerPin);
+        });
+
+  },[])
+
+  const onChangePin = (e) => {
+    setPin(e.target.value);
   };
 
   const prevProps = useRef();
@@ -101,22 +118,27 @@ function Register(props) {
   };
 
   const onSubmit = (e) => {
-    e.preventDefault();
+    if(managerPin === pin){
+      e.preventDefault();
 
-    const newUser = {
-      manUserName : name,
-      manEmail: email,
-      manPassword : password,
-    };
+      const newUser = {
+        manUserName : name,
+        manEmail: email,
+        manPassword : password,
+      };
 
-    props.register(newUser);
+      props.register(newUser);
 
-    setName('');
-    setEmail('');
-    setPassword('');
-    setConfirmPassword('');
-    setMsg(null);
-    setMsgTop(null);
+      setName('');
+      setEmail('');
+      setPassword('');
+      setConfirmPassword('');
+      setMsg(null);
+      setMsgTop(null);
+    }else{
+      swal("Unsuccessful", "Secret PIN Incorrect", "error");
+    }
+
   };
 
   return (
@@ -179,6 +201,17 @@ function Register(props) {
                       value={confirmPassword}
                       onChange={onChangeConfirmPassword}
                       placeholder='Confirm Password'
+                    />
+                  </FormGroup>
+                  <FormGroup>
+                    <Label for='pin'>Secret PIN</Label>
+                    <Input
+                        type='password'
+                        name='pin'
+                        id='examplePassword'
+                        value={pin}
+                        onChange={onChangePin}
+                        placeholder='Secret PIN'
                     />
                   </FormGroup>
                   <div style={{ display: 'flex', justifyContent: 'center' }}>
