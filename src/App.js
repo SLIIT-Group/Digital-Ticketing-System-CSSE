@@ -8,10 +8,14 @@ import Register from './components/User/Register';
 import UserHome from './components/User/UserHome';
 import ManagerHome from './components/Manager/ManagerHome';
 import InspectorHome from './components/Inspector/InspectorHome';
+
+import AddCredit from './components/User/AddCredit';
+import PayFares from './components/User/PayFares';
 import disableBrowserBackButton from 'disable-browser-back-navigation';
 import ViewTokens from './components/Inspector/ViewTokens';
 import PassengerDetails from './components/Inspector/PassengerDetails';
 import TokenForm from './components/Inspector/TokenForm';
+import GenerateTImeTable from './components/Manager/GenerateTImeTable';
 
 function App() {
   useEffect(() => {
@@ -42,7 +46,14 @@ function App() {
               path='/inspector/passengers'
               component={PassengerDetails}
             ></Route>
+            <Route exact path='/addCredit' component={AddCredit}></Route>
+            <Route exact path='/payFares' component={PayFares}></Route>
             <Route exact path='/' component={Login} />
+            <Route
+              exact
+              path='/generateTimeTable'
+              component={GenerateTImeTable}
+            ></Route>
           </div>
         </Switch>
       </Provider>
