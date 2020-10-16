@@ -20,6 +20,7 @@ import AddManager from './components/Manager/AddManager';
 import InspectorLogin from './components/Inspector/Login';
 import AddInspector from './components/Inspector/AddInspector';
 import AccountDetails from './components/User/AccountDetails';
+import ManagePins from './components/Manager/ManagePins'
 
 function App() {
   useEffect(() => {
@@ -63,6 +64,7 @@ function App() {
             <Route exact path='/manager/add' component={AddManager} />
             <Route exact path='/inspector/login' component={InspectorLogin} />
             <Route exact path='/inspector/add' component={AddInspector} />
+            <Route exact path='/pins' component={ManagePins} />
 
           </div>
         </Switch>
