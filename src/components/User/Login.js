@@ -26,7 +26,7 @@ function Login() {
             <CardHeader
               style={{
                 color: '#f2f2f2',
-                backgroundColor: '#1976D2',
+                backgroundColor: '#292b2c',
                 textAlign: 'center',
                 fontSize: '1.2em',
               }}
@@ -54,13 +54,15 @@ function Login() {
                       placeholder='Enter Password'
                     />
                   </FormGroup>
-                  <div style={{ display: 'flex', justifyContent: 'center' }}>
-                    <NavLink to='/user'>
-                      <Button style={{ backgroundColor: '#4CAF50' }}>
+                  <NavLink style={{ textDecoration: 'none' }} to='/user'>
+                    <div style={{ display: 'flex', justifyContent: 'center' }}>
+                      <Button
+                        style={{ backgroundColor: '#f0ad4e', width: '100%' }}
+                      >
                         Login
                       </Button>
-                    </NavLink>
-                  </div>
+                    </div>
+                  </NavLink>
                 </Form>
               </CardText>
             </CardBody>
@@ -69,7 +71,7 @@ function Login() {
                 padding: ' 0px',
                 color: '#f2f2f2',
                 fontSize: '0.8em',
-                backgroundColor: '#1976D2',
+                backgroundColor: '#292b2c',
                 textAlign: 'center',
               }}
             >
