@@ -23,6 +23,8 @@ import AccountDetails from './components/User/AccountDetails';
 import ViewTImeTableDetails from './components/Manager/ViewTImeTableDetails';
 import ViewPassenger from './components/Manager/ViewPassenger';
 import ViewInspectorDetails from './components/Manager/ViewInspectorDetails';
+import Stats from './components/Manager/Stats';
+
 
 function App() {
   useEffect(() => {
@@ -69,6 +71,8 @@ function App() {
             <Route exact path='/viewTimeTable' component={ViewTImeTableDetails}></Route>
             <Route exact path='/viewPassenger' component={ViewPassenger}></Route>
             <Route exact path='/viewInspectors' component={ViewInspectorDetails}></Route>
+            <Route exact path='/stats' component={Stats}></Route>
+
 
 
 
