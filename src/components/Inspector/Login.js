@@ -1,7 +1,7 @@
 import React, {useEffect, useRef, useState} from 'react';
 import {connect} from 'react-redux';
 import PropTypes from 'prop-types';
-import {login} from "../../actions/pasActions";
+import {login} from "../../actions/insActions";
 import {clearErrors} from "../../actions/errorActions";
 import {Alert} from 'reactstrap';
 import swal from "sweetalert";
@@ -68,15 +68,15 @@ function Login(props) {
     setEmail('');
     setPassword('');
     setMsg(null);
-    props.history.push('/user');
+    props.history.push('/inspector');
   }
 
   const onSubmit = (e) => {
     e.preventDefault();
 
     const existUser = {
-      pasEmail: email,
-      pasPassword : password,
+      insEmail: email,
+      insPassword : password,
     };
 
     props.login(existUser);
@@ -91,7 +91,6 @@ function Login(props) {
       <Row style={{ marginTop: '8em' }}>
         <Col sm='12' md={{ size: 6, offset: 3 }}>
           <Card>
-
             <CardHeader
               style={{
                 color: '#f2f2f2',
@@ -100,7 +99,7 @@ function Login(props) {
                 fontSize: '1.2em',
               }}
             >
-              Welcome
+              Inspector Login
             </CardHeader>
             <CardBody>
               <CardText>
@@ -150,8 +149,8 @@ function Login(props) {
               }}
             >
               <p>
-                Not a member?{' '}
-                <NavLink style={{ color: '#f2f2f2' }} to='/register'>
+                Not an Inspector?{' '}
+                <NavLink style={{ color: '#f2f2f2' }} to='/inspector/add'>
                   Register here
                 </NavLink>
               </p>
@@ -159,37 +158,12 @@ function Login(props) {
           </Card>
         </Col>
       </Row>
-      <br/>
-      <Row style={{ marginTop: '8em' }} >
-        <Col sm='6' md={{ size: 6, offset: 3 }}>
-          <Card>
-            <NavLink  to='/manager/login'>
-              <Button
-                  style={{ backgroundColor: '#ecbe7b', width: '100%' }}
-
-              >
-                Manager
-              </Button>
-            </NavLink>
-            <NavLink to='/inspector/login' className='mt-1' >
-              <Button
-                  style={{ backgroundColor: '#ecbe7b', width: '100%' }}
-
-              >
-                Inspector
-              </Button>
-            </NavLink>
-
-          </Card>
-        </Col>
-      </Row>
-
     </Container>
   );
 }
 
 const mapStateToProps = state => ({
-  isAuthenticated: state.pas.isAuthenticated,
+  isAuthenticated: state.ins.isAuthenticated,
   error : state.error
 });
 

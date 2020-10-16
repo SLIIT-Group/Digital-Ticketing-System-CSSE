@@ -8,13 +8,16 @@ import Register from './components/User/Register';
 import UserHome from './components/User/UserHome';
 import ManagerHome from './components/Manager/ManagerHome';
 import InspectorHome from './components/Inspector/InspectorHome';
-
 import AddCredit from "./components/User/AddCredit";
 import PayFares from "./components/User/PayFares";
 import disableBrowserBackButton from 'disable-browser-back-navigation';
 import ViewTokens from './components/Inspector/ViewTokens';
 import PassengerDetails from './components/Inspector/PassengerDetails';
 import GenerateTImeTable from './components/Manager/GenerateTImeTable';
+import ManagerLogin from './components/Manager/Login';
+import AddManager from './components/Manager/AddManager';
+import InspectorLogin from './components/Inspector/Login';
+import AddInspector from './components/Inspector/AddInspector';
 
 
 function App() {
@@ -45,6 +48,10 @@ function App() {
             <Route exact path='/payFares' component={PayFares}></Route>
             <Route exact path='/' component={Login} />
             <Route exact path='/generateTimeTable' component={GenerateTImeTable}></Route>
+            <Route exact path='/manager/login' component={ManagerLogin} />
+            <Route exact path='/manager/add' component={AddManager} />
+            <Route exact path='/inspector/login' component={InspectorLogin} />
+            <Route exact path='/inspector/add' component={AddInspector} />
 
           </div>
         </Switch>
