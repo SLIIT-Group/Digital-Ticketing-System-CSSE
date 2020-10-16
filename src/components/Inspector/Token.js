@@ -1,7 +1,7 @@
 import React from 'react';
-import { Card, Button, CardTitle, CardText, Badge, Row, Col } from 'reactstrap';
+import { Card, CardTitle, CardText, Badge, Row, Col } from 'reactstrap';
 
-function Token() {
+function Token({ token }) {
   const subheaderStyle = {
     color: 'grey',
     fontSize: '12px',
@@ -20,10 +20,9 @@ function Token() {
   return (
     <Card style={{ backgroundColor: '#fcfcfc' }} body outline color='warning'>
       <CardTitle>
-        {/* <Badge color='dark'>TRIP ID: #123</Badge> */}
         <Row xs='2'>
           <Col>
-            <Badge color='dark'>TRIP ID: #123</Badge>
+            <Badge color='dark'>TRIP ID: {token.tripId}</Badge>
           </Col>
           <Col>
             <p className='font-weight-bold text-dark float-right'>
@@ -34,38 +33,38 @@ function Token() {
         </Row>
       </CardTitle>
       <CardText>
-        <section style={sectionStyle}>
+        <div style={sectionStyle}>
           <Row xs='2'>
             <Col style={subheaderStyle}>ORIGIN</Col>
 
             <Col style={subheaderStyle}>DESTINATION</Col>
           </Row>
           <Row xs='2'>
-            <Col style={infoStyle}>Kaduwela</Col>
+            <Col style={infoStyle}>{token.origin}</Col>
 
-            <Col style={infoStyle}>Malabe</Col>
+            <Col style={infoStyle}>{token.destination}</Col>
           </Row>
-        </section>
-        <section style={sectionStyle}>
+        </div>
+        <div style={sectionStyle}>
           <Row xs='2'>
             <Col style={subheaderStyle}>DATE</Col>
             <Col style={subheaderStyle}>TIME</Col>
           </Row>
           <Row xs='2'>
-            <Col style={infoStyle}>4 Mar 2020</Col>
-            <Col style={infoStyle}>04:00PM</Col>
+            <Col style={infoStyle}>{token.date}</Col>
+            <Col style={infoStyle}>{token.time}</Col>
           </Row>
-        </section>
-        <section>
+        </div>
+        <div>
           <Row xs='2'>
             <Col style={subheaderStyle}>NAME</Col>
             <Col style={subheaderStyle}>AMOUNT</Col>
           </Row>
           <Row xs='2'>
-            <Col style={infoStyle}>John Doe</Col>
-            <Col style={infoStyle}>Rs. 150.00</Col>
+            <Col style={infoStyle}>{token.name}</Col>
+            <Col style={infoStyle}>{token.amount}</Col>
           </Row>
-        </section>
+        </div>
       </CardText>
     </Card>
   );
