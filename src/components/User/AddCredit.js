@@ -2,6 +2,8 @@ import React, {useEffect, useState} from 'react';
 import axios from "axios";
 import { BrowserRouter as Router, Route, Link, Switch } from "react-router-dom";
 import swal from "sweetalert";
+import { connect } from "react-redux";
+import PropTypes from "prop-types";
 
 import {
     Container,
@@ -22,6 +24,7 @@ import { NavLink } from 'react-router-dom';
 import MenuItem from '@material-ui/core/MenuItem';
 import TextField from '@material-ui/core/TextField';
 
+
 const paymentMethod = [
     {
         value: 'Credit Card',
@@ -37,10 +40,15 @@ const paymentMethod = [
     }
 ];
 
-function AddCredit() {
+function AddCredit(props) {
     useEffect(() => {
-
+        if(props.pas.user) {
+            console.log(props);
+            setId(props.pas.user._id);
+        }
     })
+
+    const [id, setId] = useState('');
 
     const updateCredit = () => {
         const req = {
@@ -50,7 +58,7 @@ function AddCredit() {
             pasAmount: 100,
         };
 
-        let id = '5f88a946963f79b26e909f06';
+        /*let id = '5f88a946963f79b26e909f06';*/
         axios.post('http://localhost:5000/api/passenger/updateCredit/' +id, req)
             .then((res) => {
                 if(res.data == 'Update complete'){
@@ -148,4 +156,9 @@ function AddCredit() {
     );
 }
 
-export default AddCredit;
+const mapsStateToProps = state => ({
+    pas: state.pas
+});
+
+export default connect(mapsStateToProps, null )(AddCredit);
+
