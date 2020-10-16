@@ -29,7 +29,7 @@ const StyledTableRow = withStyles((theme) => ({
 
 const StyledTableCell = withStyles((theme) => ({
   head: {
-    backgroundColor: theme.palette.info.dark,
+    backgroundColor: "#292b2a",
     color: theme.palette.common.white,
   },
   body: {
@@ -59,6 +59,24 @@ export default function ViewTImeTableDetails() {
       });
   }, []);
 
+  const deleteData = (id) => {
+    axios
+      .delete(`http://localhost:5000/api/man/timeTable/${id}`)
+      .then((res) => {
+        swal("successfull", "Data Successfully removed", "success");
+
+        axios
+          .get("http://localhost:5000/api/man/timeTable")
+          .then((response) => {
+            setData(response.data);
+          })
+          .catch(function (error) {
+            console.log(error);
+          });
+      })
+      .catch((err) => console.log("Error"));
+  };
+
   return (
     <React.Fragment>
       <NavBar></NavBar>
@@ -83,7 +101,7 @@ export default function ViewTImeTableDetails() {
                     <StyledTableCell align="center">End Time</StyledTableCell>
                     <StyledTableCell align="center">Distance</StyledTableCell>
                     <StyledTableCell align="center">Unit Price</StyledTableCell>
-                    <StyledTableCell align="center">Edit</StyledTableCell>
+                    {/* <StyledTableCell align="center">Edit</StyledTableCell> */}
                     <StyledTableCell align="center">Delete</StyledTableCell>
                   </TableRow>
                 </TableHead>
@@ -118,24 +136,24 @@ export default function ViewTImeTableDetails() {
                       <StyledTableCell align="center">
                         {row.unitPrice}
                       </StyledTableCell>
-                      <TableCell align="center">
+                      {/* <TableCell align="center">
                         {" "}
                         <EditIcon
                         // onClick={() => {
                         //   onClick(item._id);
                         // }}
                         ></EditIcon>
-                      </TableCell>
+                      </TableCell> */}
                       <TableCell align="center">
                         <DeleteIcon
-                        // onClick={() => {
-                        //   deleteRoom(item._id);
-                        // }}
+                          onClick={() => {
+                            deleteData(row._id);
+                            console.log(row._id);
+                          }}
                         >
                           {" "}
                         </DeleteIcon>
                       </TableCell>
-                      
                     </StyledTableRow>
                   ))}
                 </TableBody>
