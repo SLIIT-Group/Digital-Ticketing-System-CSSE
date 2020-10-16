@@ -52,12 +52,6 @@ function Login(props) {
       }
     }
 
-
-    if (msg) {
-      swal("Unsuccessful", msg, "error");
-      setMsg(null );
-    }
-
     if (props.isAuthenticated) {
       loginClose();
     }
@@ -91,6 +85,9 @@ function Login(props) {
       <Row style={{ marginTop: '8em' }}>
         <Col sm='12' md={{ size: 6, offset: 3 }}>
           <Card>
+            {msg ? (
+                <Alert color="danger">{msg}</Alert>
+            ) : null}
             <CardHeader
               style={{
                 color: '#f2f2f2',

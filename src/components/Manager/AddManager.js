@@ -12,7 +12,7 @@ import {
   Form,
   FormGroup,
   Label,
-  Input,
+  Input, Alert,
 } from 'reactstrap';
 import { Link, NavLink } from 'react-router-dom';
 import { connect } from "react-redux";
@@ -96,11 +96,6 @@ function Register(props) {
       }
     }
 
-    if (msg) {
-      swal("Unsuccessful", msg, "error");
-      setMsg(null );
-    }
-
     if (props.isAuthenticated) {
       registerClose();
     }
@@ -146,6 +141,9 @@ function Register(props) {
       <Row style={{ marginTop: '2em', marginBottom: '2em' }}>
         <Col sm='12' md={{ size: 6, offset: 3 }}>
           <Card>
+            {msg ? (
+                <Alert color="danger">{msg}</Alert>
+            ) : null}
             <CardHeader
               style={{
                 color: '#f2f2f2',
