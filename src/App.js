@@ -11,6 +11,7 @@ import InspectorHome from './components/Inspector/InspectorHome';
 import disableBrowserBackButton from 'disable-browser-back-navigation';
 import ViewTokens from './components/Inspector/ViewTokens';
 import PassengerDetails from './components/Inspector/PassengerDetails';
+import TokenForm from './components/Inspector/TokenForm';
 
 function App() {
   useEffect(() => {
@@ -26,6 +27,11 @@ function App() {
             <Route exact path='/user' component={UserHome}></Route>
             <Route exact path='/manager' component={ManagerHome}></Route>
             <Route exact path='/inspector' component={InspectorHome}></Route>
+            <Route
+              exact
+              path='/inspector/tokenfilter'
+              component={TokenForm}
+            ></Route>
             <Route
               exact
               path='/inspector/viewtokens'
