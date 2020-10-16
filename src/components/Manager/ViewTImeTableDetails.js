@@ -1,11 +1,7 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import NavBar from "./Navbar";
 import swal from "sweetalert";
-
 import { Container, Row, Col } from "reactstrap";
-import { NavLink } from "react-router-dom";
-import MenuItem from "@material-ui/core/MenuItem";
-import TextField from "@material-ui/core/TextField";
 import { withStyles, makeStyles } from "@material-ui/core/styles";
 import Table from "@material-ui/core/Table";
 import TableBody from "@material-ui/core/TableBody";
@@ -14,10 +10,14 @@ import TableContainer from "@material-ui/core/TableContainer";
 import TableHead from "@material-ui/core/TableHead";
 import TableRow from "@material-ui/core/TableRow";
 import Paper from "@material-ui/core/Paper";
+import DeleteIcon from "@material-ui/icons/Delete";
+import EditIcon from "@material-ui/icons/Edit";
+
 // import axios from "axios";
 // import { Link } from "react-router-dom";
 // import EditIcon from "@material-ui/icons/Edit";
 // import DeleteIcon from "@material-ui/icons/Delete";
+const axios = require("axios");
 
 const StyledTableRow = withStyles((theme) => ({
   root: {
@@ -45,41 +45,100 @@ const useStyles = makeStyles({
 
 export default function ViewTImeTableDetails() {
   const classes = useStyles();
+  const [data, setData] = useState([]);
+
+  useEffect(() => {
+    axios
+      .get("http://localhost:5000/api/man/timeTable")
+      .then((response) => {
+        setData(response.data);
+        // setSearchResults(response.data);
+      })
+      .catch(function (error) {
+        console.log(error);
+      });
+  }, []);
 
   return (
     <React.Fragment>
       <NavBar></NavBar>
       <Container>
         <Row style={{ marginTop: "4em", marginBottom: "4em" }}>
-          <Col sm="12" md={{ size: 6, offset: 3 }}>
+          <Col sm="12" md={{ size: 12, offset: 0 }}>
             <TableContainer component={Paper}>
               <Table className={classes.table} aria-label="customized table">
                 <TableHead>
                   <TableRow>
-                    <StyledTableCell align="right">
+                    <StyledTableCell align="center">
                       Route Number
                     </StyledTableCell>
-                    <StyledTableCell align="right">
-                      Bus Number
-                    </StyledTableCell>
-                    <StyledTableCell align="right">
+                    <StyledTableCell align="center">Bus Number</StyledTableCell>
+                    <StyledTableCell align="center">
                       Start Location
                     </StyledTableCell>
-                    <StyledTableCell align="right">
+                    <StyledTableCell align="center">
                       End Location
                     </StyledTableCell>
-                    <StyledTableCell align="right">
-                      Start Time
-                    </StyledTableCell>
-                    <StyledTableCell align="right">End Time</StyledTableCell>
-                    <StyledTableCell align="right">Distance</StyledTableCell>
-                    <StyledTableCell align="right">
-                      Unit Price
-                    </StyledTableCell>
-                    <StyledTableCell align="right">Edit/Delete</StyledTableCell>
+                    <StyledTableCell align="center">Start Time</StyledTableCell>
+                    <StyledTableCell align="center">End Time</StyledTableCell>
+                    <StyledTableCell align="center">Distance</StyledTableCell>
+                    <StyledTableCell align="center">Unit Price</StyledTableCell>
+                    <StyledTableCell align="center">Edit</StyledTableCell>
+                    <StyledTableCell align="center">Delete</StyledTableCell>
                   </TableRow>
                 </TableHead>
-                <TableBody></TableBody>
+                <TableBody>
+                  {data.map((row) => (
+                    <StyledTableRow key={row._id}>
+                      <StyledTableCell
+                        component="th"
+                        scope="row"
+                        align="center"
+                      >
+                        {row.routeNo}
+                      </StyledTableCell>
+                      <StyledTableCell align="center">
+                        {row.busNo}
+                      </StyledTableCell>
+                      <StyledTableCell align="center">
+                        {row.startLocation}
+                      </StyledTableCell>
+                      <StyledTableCell align="center">
+                        {row.endLocation}
+                      </StyledTableCell>
+                      <StyledTableCell align="center">
+                        {row.startTime}
+                      </StyledTableCell>
+                      <StyledTableCell align="center">
+                        {row.arrivalTime}
+                      </StyledTableCell>
+                      <StyledTableCell align="center">
+                        {row.distance}
+                      </StyledTableCell>
+                      <StyledTableCell align="center">
+                        {row.unitPrice}
+                      </StyledTableCell>
+                      <TableCell align="center">
+                        {" "}
+                        <EditIcon
+                        // onClick={() => {
+                        //   onClick(item._id);
+                        // }}
+                        ></EditIcon>
+                      </TableCell>
+                      <TableCell align="center">
+                        <DeleteIcon
+                        // onClick={() => {
+                        //   deleteRoom(item._id);
+                        // }}
+                        >
+                          {" "}
+                        </DeleteIcon>
+                      </TableCell>
+                      
+                    </StyledTableRow>
+                  ))}
+                </TableBody>
               </Table>
             </TableContainer>
           </Col>
