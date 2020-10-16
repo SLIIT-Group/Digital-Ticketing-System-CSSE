@@ -47,4 +47,8 @@
     "sweetalert": "^2.1.2"
   },
   "proxy": "http://localhost:3000"
+  "proxy": "http://localhost:3000",
+  "devDependencies": {
+    "@material-ui/core": "^4.11.0"
+  }
 }
