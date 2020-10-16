@@ -41,5 +41,10 @@
       "last 1 safari version"
     ]
   },
+  "devDependencies": {
+    "prop-types": "^15.7.2",
+    "reactstrap": "^8.4.1",
+    "sweetalert": "^2.1.2"
+  },
   "proxy": "http://localhost:3000"
 }

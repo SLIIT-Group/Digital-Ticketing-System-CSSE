@@ -89,4 +89,10 @@ function Login() {
   );
 }
 
-export default Login;
+const mapStateToProps = state => ({
+  isAuthenticated: state.cus.isAuthenticated,
+  error : state.error
+});
+
+export  default connect(mapStateToProps,{login, clearErrors})(Login);
+

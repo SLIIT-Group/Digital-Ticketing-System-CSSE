@@ -55,7 +55,7 @@ export const register = ({pasUserName, pasEmail, pasPassword}) => dispatch => {
 
 
 
-    axios.post('http://localhost:5000/api/cus/register', body, config).then(res => dispatch({
+    axios.post('http://localhost:5000/api/pas/register', body, config).then(res => dispatch({
         type:REGISTER_SUCCESS,
         payload: res.data
     })).catch(error => {
