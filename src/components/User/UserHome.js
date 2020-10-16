@@ -1,6 +1,8 @@
 import React from 'react';
 import { Container, Row, Col, Button } from 'reactstrap';
 import NavBar from './Navbar';
+import Account from './AccountDetails';
+import { NavLink } from 'react-router-dom';
 
 function UserHome() {
   return (
@@ -22,9 +24,11 @@ function UserHome() {
             xs={{ size: 6, offset: 3 }}
             md={{ size: 6, offset: 3 }}
           >
-            <Button color='primary' size='lg' block>
-              Account
-            </Button>
+            <NavLink style={{ textDecoration: 'none' }} to='/user/account'>
+              <Button color='primary' size='lg' block>
+                Account
+              </Button>
+            </NavLink>
           </Col>
           <Col
             style={{ marginBottom: '2em' }}
@@ -36,9 +40,9 @@ function UserHome() {
             </Button>
           </Col>
           <Col
-              style={{ marginBottom: '2em' }}
-              xs={{ size: 6, offset: 3 }}
-              md={{ size: 6, offset: 3 }}
+            style={{ marginBottom: '2em' }}
+            xs={{ size: 6, offset: 3 }}
+            md={{ size: 6, offset: 3 }}
           >
             <Button href='/payFares' color='primary' size='lg' block>
               Pay fares
