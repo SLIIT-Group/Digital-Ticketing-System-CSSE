@@ -17,7 +17,7 @@ import {
 import { Link, NavLink } from 'react-router-dom';
 import { connect } from "react-redux";
 import PropTypes from "prop-types";
-import {register} from "../../actions/pasActions";
+import {register} from "../../actions/manActions";
 import { clearErrors } from "../../actions/errorActions";
 import swal from "sweetalert";
 
@@ -97,16 +97,16 @@ function Register(props) {
     setConfirmPassword('');
     setMsg(null);
     setMsgTop(null);
-    props.history.push('/user');
+    props.history.push('/manager');
   };
 
   const onSubmit = (e) => {
     e.preventDefault();
 
     const newUser = {
-      pasUserName : name,
-      pasEmail: email,
-      pasPassword : password,
+      manUserName : name,
+      manEmail: email,
+      manPassword : password,
     };
 
     props.register(newUser);
@@ -132,13 +132,13 @@ function Register(props) {
                 fontSize: '1.2em',
               }}
             >
-              Register
+              Add Manager
             </CardHeader>
             <CardBody>
               <CardText>
                 <Form>
                   <FormGroup>
-                    <Label for='exampleEmail'>Name</Label>
+                    <Label for='exampleEmail'>Manager's Name</Label>
                     <Input
                       type='text'
                       name='name'
@@ -149,7 +149,7 @@ function Register(props) {
                     />
                   </FormGroup>
                   <FormGroup>
-                    <Label for='exampleEmail'>Email</Label>
+                    <Label for='exampleEmail'>Manager's Email</Label>
                     <Input
                       type='email'
                       name='email'
@@ -160,7 +160,7 @@ function Register(props) {
                     />
                   </FormGroup>
                   <FormGroup>
-                    <Label for='examplePassword'>Password</Label>
+                    <Label for='examplePassword'>Manager's Password</Label>
                     <Input
                       type='password'
                       name='password'
@@ -171,7 +171,7 @@ function Register(props) {
                     />
                   </FormGroup>
                   <FormGroup>
-                    <Label for='confirmPassword'>Confirm Password</Label>
+                    <Label for='confirmPassword'>Manager's Confirm Password</Label>
                     <Input
                       type='password'
                       name='confirmPassword'
@@ -186,7 +186,7 @@ function Register(props) {
                       style={{ backgroundColor: '#f0ad4e', width: '100%' }}
                       onClick={onSubmit}
                     >
-                      Register
+                      Add
                     </Button>
                   </div>
                 </Form>
@@ -216,7 +216,7 @@ function Register(props) {
 }
 
 const mapStateToProps = (state) => ({
-  isAuthenticated: state.pas.isAuthenticated,
+  isAuthenticated: state.man.isAuthenticated,
   error: state.error,
 });
 

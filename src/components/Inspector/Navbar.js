@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, {useEffect, useState} from 'react';
 import {
   Collapse,
   Navbar,
@@ -8,11 +8,33 @@ import {
   NavItem,
   NavLink, Button,
 } from 'reactstrap';
+import { logout } from "../../actions/insActions";
+import { connect } from "react-redux";
+import PropTypes from "prop-types";
+import swal from "sweetalert";
 
 const Example = (props) => {
+  let propTypes = {
+    logout: PropTypes.func.isRequired,
+  };
+
+  const logoutUser = (e) => {
+    e.preventDefault();
+    props.logout();
+    /*props.history.push('/');*/
+  };
   const [collapsed, setCollapsed] = useState(true);
 
+  const [name, setName] = useState('');
+
   const toggleNavbar = () => setCollapsed(!collapsed);
+
+  useEffect(() => {
+    console.log(props);
+    if(props.ins.user) {
+      setName(props.ins.user.insUserName);
+    }
+  });
 
   return (
     <div>
@@ -27,7 +49,7 @@ const Example = (props) => {
               <NavLink href='/inspector' className="justify-content-center text-center"><Button
                   style={{ backgroundColor: '#f0ad4e', width: '100%' }}
               >
-                Inspector ID :
+                Inspector : {name}
               </Button></NavLink>
             </NavItem>
             <NavItem>
@@ -57,5 +79,8 @@ const Example = (props) => {
     </div>
   );
 };
+const mapsStateToProps = state => ({
+  ins: state.ins
+});
 
-export default Example;
+export default connect(mapsStateToProps, { logout })(Example);

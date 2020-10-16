@@ -14,7 +14,10 @@ function InspectorHome() {
             xs={{ size: 6, offset: 3 }}
             md={{ size: 6, offset: 3 }}
           >
-            <Link style={{ textDecoration: 'none' }} to='/inspector/viewtokens'>
+            <Link
+              style={{ textDecoration: 'none' }}
+              to='/inspector/tokenfilter'
+            >
               <Button color='primary' size='lg' block>
                 View Tokens
               </Button>

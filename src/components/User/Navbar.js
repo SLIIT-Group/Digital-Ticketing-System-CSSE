@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, {useEffect, useState} from 'react';
 import {
   Collapse,
   Navbar,
@@ -8,13 +8,35 @@ import {
   NavItem,
   NavLink, Button,
 } from 'reactstrap';
+import { logout } from "../../actions/pasActions";
+import { connect } from "react-redux";
+import PropTypes from "prop-types";
+import swal from "sweetalert";
 
-const Example = (props) => {
+function Example (props) {
+
+  let propTypes = {
+    logout: PropTypes.func.isRequired,
+  };
+
+  const logoutUser = (e) => {
+    e.preventDefault();
+    props.logout();
+    /*props.history.push('/');*/
+  };
+
   const [collapsed, setCollapsed] = useState(true);
+  const [name, setName] = useState('');
 
   const toggleNavbar = () => setCollapsed(!collapsed);
 
+  useEffect(() => {
+    if(props.pas.user) {
+      setName(props.pas.user.pasUserName);
+    }
+  });
   return (
+
     <div>
       <Navbar color='dark' dark>
         <NavbarBrand href='/' className='mr-auto font-weight-bold text-warning'>
@@ -27,7 +49,7 @@ const Example = (props) => {
               <NavLink href='/user' className="justify-content-center text-center"><Button
                   style={{ backgroundColor: '#f0ad4e', width: '100%' }}
               >
-                Passenger ID :
+                Passenger : {name}
               </Button></NavLink>
             </NavItem>
             <NavItem>
@@ -49,8 +71,9 @@ const Example = (props) => {
               </Button></NavLink>
             </NavItem>
             <NavItem>
-                <NavLink href='/' className="justify-content-center text-center"><Button className='btn btn-warning'
-                                                                                         style={{width: '50%' }}>
+                <NavLink className="justify-content-center text-center"><Button className='btn btn-warning'
+                                                                                         style={{width: '50%' }}
+                                                                                         onClick={logoutUser}>
                   Logout
                 </Button></NavLink>
             </NavItem>
@@ -61,4 +84,9 @@ const Example = (props) => {
   );
 };
 
-export default Example;
+const mapsStateToProps = state => ({
+  pas: state.pas
+});
+
+export default connect(mapsStateToProps, { logout })(Example);
+
