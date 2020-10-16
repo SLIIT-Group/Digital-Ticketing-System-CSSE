@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import NavBar from "./Navbar";
+import swal from "sweetalert";
 
 import {
   Container,
@@ -63,14 +64,59 @@ function GenerateTImeTable() {
 
   const test = (e) => {
     e.preventDefault();
-    console.log(startLocation);
-    console.log(endLocation);
-    console.log(routeNumber);
-    console.log(busNumber);
-    console.log(startTime);
-    console.log(endTime);
-    console.log(distance);
-    console.log(price);
+    if (
+      startLocation === "" ||
+      endLocation === "" ||
+      routeNumber === "" ||
+      busNumber === "" ||
+      startTime === "" ||
+      endTime === "" ||
+      distance === "" ||
+      price === ""
+    ) {
+      swal("sorry", "Fill the form correctly", "error");
+    } else if (parseFloat(distance) < 0) {
+      swal("sorry", "Distance should be a positive value", "error");
+    } else if (parseFloat(price) < 0) {
+      swal("sorry", "Price should be a positive value", "error");
+    } else if (
+      parseFloat(startTime.split(":")[0]) > parseFloat(endTime.split(":")[0])
+    ) {
+      swal("sorry", "Arrival time should be greater than start time", "error");
+    } else if (
+      parseFloat(startTime.split(":")[0]) ===
+        parseFloat(endTime.split(":")[0]) &&
+      parseFloat(startTime.split(":")[1]) > parseFloat(endTime.split(":")[1])
+    ) {
+      swal("sorry", "Arrival time should be greater than start time", "error");
+    } else if (startTime === endTime) {
+      swal("sorry", "Times should be different", "error");
+    } else {
+      const requestOptions = {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          routeNo: routeNumber,
+          busNo: busNumber,
+          startTime: startTime,
+          startLocation: startLocation,
+          endLocation: endLocation,
+          arrivalTime: endTime,
+        }),
+      };
+      fetch("http://localhost:5000/api/man/timeTable", requestOptions)
+        .then((response) => response.json())
+        .then((data) => {
+          if (data["success"]) {
+            swal("successfull", "Data Saved Successfully", "success");
+          } else {
+            swal("sorry", "Data is already saved", "error");
+          }
+        })
+        .catch((err) => {
+          swal("error", "retry", "error");
+        });
+    }
   };
 
   return (
@@ -204,7 +250,7 @@ function GenerateTImeTable() {
                   textAlign: "center",
                 }}
               >
-                <p style={{marginTop:10}}>All rights reserved</p>
+                <p style={{ marginTop: 10 }}>All rights reserved</p>
               </CardFooter>
             </Card>
           </Col>
