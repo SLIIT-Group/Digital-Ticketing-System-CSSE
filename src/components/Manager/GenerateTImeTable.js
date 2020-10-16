@@ -102,6 +102,8 @@ function GenerateTImeTable() {
           startLocation: startLocation,
           endLocation: endLocation,
           arrivalTime: endTime,
+          distance:distance,
+          unitPrice:price
         }),
       };
       fetch("http://localhost:5000/api/man/timeTable", requestOptions)
@@ -228,13 +230,17 @@ function GenerateTImeTable() {
                     </FormGroup>
 
                     <div style={{ display: "flex", justifyContent: "center" }}>
-                      <NavLink to="/user">
-                        <Button
-                          type="submit"
-                          style={{ backgroundColor: "#f0ad4e" }}
-                          onClick={(e) => test(e)}
-                        >
-                          Save Details
+                      <Button
+                        type="submit"
+                        style={{ backgroundColor: "#f0ad4e" }}
+                        onClick={(e) => test(e)}
+                      >
+                        Save Details
+                      </Button>
+
+                      <NavLink to="/viewTimeTable">
+                        <Button type="submit" style={{ marginLeft: 5 }}>
+                          View Details
                         </Button>
                       </NavLink>
                     </div>
