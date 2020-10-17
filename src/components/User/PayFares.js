@@ -43,13 +43,13 @@ function PayFares(props) {
         <div>
         <NavBar></NavBar>
         <Container>
-            <Row style={{ marginTop: '8em' }}>
+            <Row style={{ marginTop: '4em', marginBottom: '2em' }}>
                 <Col sm='12' md={{ size: 6, offset: 3 }}>
                     <Card>
                         <CardHeader
                             style={{
                                 color: '#f2f2f2',
-                                backgroundColor: '#1976D2',
+                                backgroundColor: '#292b2c',
                                 textAlign: 'center',
                                 fontSize: '1.2em',
                             }}
@@ -115,7 +115,7 @@ function PayFares(props) {
                                     </FormGroup>
                                     <div style={{ display: 'flex', justifyContent: 'center' }}>
                                         <NavLink to='/user'>
-                                            <Button style={{ backgroundColor: '#4CAF50' }}>
+                                            <Button style={{ backgroundColor: '#f0ad4e', width: '100%' }}>
                                                 Pay
                                             </Button>
                                         </NavLink>
@@ -125,19 +125,12 @@ function PayFares(props) {
                         </CardBody>
                         <CardFooter
                             style={{
-                                padding: ' 0px',
                                 color: '#f2f2f2',
                                 fontSize: '0.8em',
-                                backgroundColor: '#1976D2',
+                                backgroundColor: '#292b2c',
                                 textAlign: 'center',
                             }}
                         >
-                            <p>
-                                {/*Not a member?{' '}*/}
-                                <NavLink style={{ color: '#f2f2f2' }} to='/register'>
-                                    All rights reserved
-                                </NavLink>
-                            </p>
                         </CardFooter>
                     </Card>
                 </Col>
