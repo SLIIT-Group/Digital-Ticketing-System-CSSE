@@ -23,6 +23,7 @@ import {
 import { NavLink } from 'react-router-dom';
 import MenuItem from '@material-ui/core/MenuItem';
 import TextField from '@material-ui/core/TextField';
+import NavBar from "./Navbar";
 
 
 const paymentMethod = [
@@ -41,41 +42,55 @@ const paymentMethod = [
 ];
 
 function AddCredit(props) {
-    const [amount, setAmount] = useState('');
+    const [existingAmount, setExistingAmount] = useState();
+    const [amount, setAmount] = useState();
 
     const handleAmount = (event) => {
         setAmount(event.target.value);
     }
 
-    // useEffect(() => {
-    //     if(props.pas.user) {
-    //         setId(props.pas.user._id);
-    //     }
-    // })
+    useEffect(() => {
+        if(props.pas.user) {
+            setId(props.pas.user._id);
+        }
 
-    //const [id, setId] = useState('');
+        //console.log(id);
+        axios.get('http://localhost:5000/api/passenger/edit/' +id)
+            .then(response => {
+                setExistingAmount(response.data.pasAmount);
+
+            })
+            .catch(function (error) {
+                console.log(error);
+            })
+    })
+
+    const [id, setId] = useState('');
 
     const updateCredit = () => {
         const req = {
             userName: 'abc',
             pasEmail: 'abc',
             password: 'abc',
-            pasAmount: 100,
+            pasAmount: existingAmount + parseInt(amount),
         };
 
-        let id = '5f88a946963f79b26e909f06';
+        // let id = '5f88a946963f79b26e909f06';
         axios.post('http://localhost:5000/api/passenger/updateCredit/' +id, req)
             .then((res) => {
                 if(res.data == 'Update complete'){
-                    swal("Successful", "Session details updated", "success");
+                    swal("Successful", "Credits added to account", "success");
                 }else{
-                    swal("Unsuccessful", "Error while updating details", "error");
+                    swal("Unsuccessful", "Error while adding credits", "error");
                 }
             });
-        console.log(amount);
+        console.log(parseInt(amount));
+        console.log(existingAmount);
     };
 
     return (
+        <div>
+        <NavBar></NavBar>
         <Container>
             <Row style={{ marginTop: '8em' }}>
                 <Col sm='12' md={{ size: 6, offset: 3 }}>
@@ -100,6 +115,7 @@ function AddCredit(props) {
                                             name='cbalance'
                                             id='cbalance'
                                             placeholder='Rs.'
+                                            value = {existingAmount}
                                         />
                                     </FormGroup>
                                     <FormGroup>
@@ -160,13 +176,14 @@ function AddCredit(props) {
                 </Col>
             </Row>
         </Container>
+        </div>
     );
 }
 
-// const mapsStateToProps = state => ({
-//     pas: state.pas
-// });
+const mapsStateToProps = state => ({
+    pas: state.pas
+});
 
-//export default connect(mapsStateToProps, null )(AddCredit);
-export default AddCredit;
+export default connect(mapsStateToProps, null )(AddCredit);
+//export default AddCredit;
 

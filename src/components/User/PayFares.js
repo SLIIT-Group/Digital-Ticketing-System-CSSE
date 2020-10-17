@@ -18,24 +18,27 @@ import {
 import { NavLink } from 'react-router-dom';
 import MenuItem from '@material-ui/core/MenuItem';
 import TextField from '@material-ui/core/TextField';
+import NavBar from "./Navbar";
 
 const paymentMethod = [
     {
-        value: 'Credit Card',
-        label: 'Credit Card',
+        value: 'Colombo',
+        label: 'Colombo',
     },
     {
-        value: 'Debit card',
-        label: 'Debit card',
+        value: 'Rathnapura',
+        label: 'Rathnapura',
     },
     {
-        value: 'Frimi Account',
-        label: 'Frimi Account',
+        value: 'Galle',
+        label: 'Galle',
     }
 ];
 
 function PayFares() {
     return (
+        <div>
+            <NavBar></NavBar>
         <Container>
             <Row style={{ marginTop: '8em' }}>
                 <Col sm='12' md={{ size: 6, offset: 3 }}>
@@ -137,6 +140,7 @@ function PayFares() {
                 </Col>
             </Row>
         </Container>
+        </div>
     );
 }
 
