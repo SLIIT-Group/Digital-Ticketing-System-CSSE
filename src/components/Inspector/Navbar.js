@@ -21,7 +21,6 @@ const Example = (props) => {
   const logoutUser = (e) => {
     e.preventDefault();
     props.logout();
-    /*props.history.push('/');*/
   };
   const [collapsed, setCollapsed] = useState(true);
 
@@ -67,8 +66,8 @@ const Example = (props) => {
               </Button></NavLink>
             </NavItem>
             <NavItem>
-              <NavLink href='/' className="justify-content-center text-center"><Button className='btn btn-warning'
-                  style={{width: '50%' }}
+              <NavLink  className="justify-content-center text-center"><Button className='btn btn-warning'
+                  style={{width: '50%' }} onClick={logoutUser}
               >
                 Logout
               </Button></NavLink>

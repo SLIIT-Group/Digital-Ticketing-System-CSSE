@@ -2,10 +2,11 @@ import React, { useState, useEffect } from "react";
 import NavBar from "./Navbar";
 import { Container, Row, Col } from "reactstrap";
 import Chart from "react-apexcharts";
-
+import { connect } from "react-redux";
+import Login from "./Login";
 const axios = require("axios");
 
-export default function Stats() {
+function Stats(props) {
   const [inspectors, setInspectors] = useState([]);
   const [passengers, setPassengers] = useState([]);
 
@@ -44,7 +45,8 @@ export default function Stats() {
     },
   ];
 
-  return (
+  return (<>
+    {props.man.user && props.man.user.manEmail?
     <React.Fragment>
       <NavBar></NavBar>
       <Container>
@@ -61,5 +63,12 @@ export default function Stats() {
         </Row>
       </Container>
     </React.Fragment>
+        : <Login />}
+      </>
   );
 }
+const mapsStateToProps = state => ({
+  man: state.man
+});
+
+export default connect(mapsStateToProps, null)(Stats);

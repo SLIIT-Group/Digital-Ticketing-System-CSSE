@@ -16,8 +16,10 @@ import {
 } from 'reactstrap';
 import { Link } from 'react-router-dom';
 import NavBar from './Navbar';
+import { connect } from "react-redux";
+import Login from "./Login";
 
-function TokenForm() {
+function TokenForm(props) {
   const initialState = { bus: '', trip: '', date: '', time: '', location: '' };
   const [tokenFilters, setTokenFilters] = useState(initialState);
 
@@ -25,7 +27,8 @@ function TokenForm() {
     setTokenFilters({ ...tokenFilters, [e.target.name]: e.target.value });
   };
 
-  return (
+  return (<>
+    {props.ins.user && props.ins.user.insEmail?
     <div>
       <NavBar></NavBar>
       <Container>
@@ -129,7 +132,13 @@ function TokenForm() {
         </Row>
       </Container>
     </div>
+        : <Login />}
+      </>
   );
 }
+const mapsStateToProps = state => ({
+  ins: state.ins
+});
 
-export default TokenForm;
+export default connect(mapsStateToProps, null)(TokenForm);
+

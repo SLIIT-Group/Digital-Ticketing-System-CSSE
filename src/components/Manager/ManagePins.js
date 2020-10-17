@@ -2,7 +2,6 @@ import React, { useState, useEffect } from "react";
 import NavBar from "./Navbar";
 import axios from 'axios';
 import swal from "sweetalert";
-
 import {
   Container,
   Row,
@@ -19,7 +18,8 @@ import {
   Input,
 } from "reactstrap";
 import { NavLink } from "react-router-dom";
-
+import { connect } from "react-redux";
+import Login from "./Login";
 
 function ManagePins(props) {
   const [managerPin, setManagerPin] = useState("");
@@ -61,7 +61,8 @@ function ManagePins(props) {
   },[])
 
 
-  return (
+  return (<>
+    {props.man.user && props.man.user.manEmail?
     <React.Fragment>
       <NavBar></NavBar>
       <Container>
@@ -127,8 +128,12 @@ function ManagePins(props) {
           </Col>
         </Row>
       </Container>
-    </React.Fragment>
+    </React.Fragment>: <Login />}
+      </>
   );
 }
+const mapsStateToProps = state => ({
+  man: state.man
+});
 
-export default ManagePins;
+export default connect(mapsStateToProps, null)(ManagePins);

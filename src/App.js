@@ -24,6 +24,7 @@ import ViewTImeTableDetails from './components/Manager/ViewTImeTableDetails';
 import ViewPassenger from './components/Manager/ViewPassenger';
 import ViewInspectorDetails from './components/Manager/ViewInspectorDetails';
 import Stats from './components/Manager/Stats';
+import NoAccess from "./components/commons/NoAccess";
 
 import ManagePins from './components/Manager/ManagePins'
 
@@ -74,6 +75,7 @@ function App() {
             <Route exact path='/viewInspectors' component={ViewInspectorDetails}></Route>
             <Route exact path='/stats' component={Stats}></Route>
             <Route exact path='/pins' component={ManagePins} />
+            <Route exact path='/noAccess' component={NoAccess} />
 
 
 

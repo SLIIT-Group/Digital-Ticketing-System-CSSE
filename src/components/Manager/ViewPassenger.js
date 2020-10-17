@@ -9,6 +9,8 @@ import TableContainer from "@material-ui/core/TableContainer";
 import TableHead from "@material-ui/core/TableHead";
 import TableRow from "@material-ui/core/TableRow";
 import Paper from "@material-ui/core/Paper";
+import { connect } from "react-redux";
+import Login from "./Login";
 
 const axios = require("axios");
 
@@ -36,7 +38,8 @@ const useStyles = makeStyles({
   },
 });
 
-export default function ViewPassenger() {
+function ViewPassenger(props) {
+
   const classes = useStyles();
   const [data, setData] = useState([]);
 
@@ -51,7 +54,8 @@ export default function ViewPassenger() {
       });
   }, []);
 
-  return (
+  return (<>
+    {props.man.user && props.man.user.manEmail?
     <React.Fragment>
       <NavBar></NavBar>
       <Container>
@@ -94,5 +98,12 @@ export default function ViewPassenger() {
         </Row>
       </Container>
     </React.Fragment>
+        : <Login />}
+      </>
   );
 }
+const mapsStateToProps = state => ({
+  man: state.man
+});
+
+export default connect(mapsStateToProps, null)(ViewPassenger);

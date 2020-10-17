@@ -1,9 +1,12 @@
 import React from 'react';
 import { Container, Row, Col, Button } from 'reactstrap';
 import NavBar from './Navbar';
+import { connect } from "react-redux";
+import Login from "./Login";
 
-function ManagerHome() {
-  return (
+function ManagerHome(props) {
+  return (<>
+    {props.man.user && props.man.user.manEmail?
     <div>
       <NavBar></NavBar>
       <Container>
@@ -66,7 +69,13 @@ function ManagerHome() {
         </Row>
       </Container>
     </div>
+        : <Login />}
+      </>
   );
 }
+const mapsStateToProps = state => ({
+  man: state.man
+});
 
-export default ManagerHome;
+export default connect(mapsStateToProps, null)(ManagerHome);
+

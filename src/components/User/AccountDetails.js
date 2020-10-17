@@ -16,8 +16,10 @@ import {
   Input,
 } from 'reactstrap';
 import { NavLink } from 'react-router-dom';
+import { connect } from "react-redux";
+import Login from "./Login";
 
-function AccountDetails() {
+function AccountDetails(props) {
   const user = {
     name: 'John Doe',
     nic: '963211453V',
@@ -25,7 +27,8 @@ function AccountDetails() {
     lastTravelDate: '2020-10-16',
     lastTravelTime: '16:00',
   };
-  return (
+  return (<>
+    {props.pas.user && props.pas.user.pasEmail?
     <div>
       <NavBar></NavBar>
       <Container>
@@ -119,8 +122,12 @@ function AccountDetails() {
           </Col>
         </Row>
       </Container>
-    </div>
-  );
+    </div>: <Login />}
+  </>);
 }
+const mapsStateToProps = state => ({
+  pas: state.pas
+});
 
-export default AccountDetails;
+export default connect(mapsStateToProps, null)(AccountDetails);
+

@@ -1,5 +1,4 @@
-import React, {useState} from 'react';
-
+import React from 'react';
 import {
     Container,
     Row,
@@ -19,6 +18,8 @@ import { NavLink } from 'react-router-dom';
 import MenuItem from '@material-ui/core/MenuItem';
 import TextField from '@material-ui/core/TextField';
 import NavBar from "./Navbar";
+import { connect } from "react-redux";
+import Login from "./Login";
 
 const paymentMethod = [
     {
@@ -35,10 +36,10 @@ const paymentMethod = [
     }
 ];
 
-function PayFares() {
+function PayFares(props) {
     return (
-        <div>
-            <NavBar></NavBar>
+        <>
+            {props.pas.user && props.pas.user.pasEmail?
         <Container>
             <Row style={{ marginTop: '8em' }}>
                 <Col sm='12' md={{ size: 6, offset: 3 }}>
@@ -139,9 +140,13 @@ function PayFares() {
                     </Card>
                 </Col>
             </Row>
-        </Container>
-        </div>
+        </Container>: <Login />}
+        </>
     );
 }
+const mapsStateToProps = state => ({
+    pas: state.pas
+});
 
-export default PayFares;
+export default connect(mapsStateToProps, null )(PayFares);
+

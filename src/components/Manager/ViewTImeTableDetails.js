@@ -11,6 +11,8 @@ import TableHead from "@material-ui/core/TableHead";
 import TableRow from "@material-ui/core/TableRow";
 import Paper from "@material-ui/core/Paper";
 import DeleteIcon from "@material-ui/icons/Delete";
+import { connect } from "react-redux";
+import Login from "./Login";
 const axios = require("axios");
 
 const StyledTableRow = withStyles((theme) => ({
@@ -37,7 +39,7 @@ const useStyles = makeStyles({
   },
 });
 
-export default function ViewTImeTableDetails() {
+function ViewTImeTableDetails(props) {
   const classes = useStyles();
   const [data, setData] = useState([]);
 
@@ -70,7 +72,8 @@ export default function ViewTImeTableDetails() {
       .catch((err) => console.log("Error"));
   };
 
-  return (
+  return (<>
+    {props.man.user && props.man.user.manEmail?
     <React.Fragment>
       <NavBar></NavBar>
       <Container>
@@ -146,5 +149,12 @@ export default function ViewTImeTableDetails() {
         </Row>
       </Container>
     </React.Fragment>
+        : <Login />}
+      </>
   );
 }
+const mapsStateToProps = state => ({
+  man: state.man
+});
+
+export default connect(mapsStateToProps, null)(ViewTImeTableDetails);

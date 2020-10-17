@@ -2,9 +2,13 @@ import React from 'react';
 import { Container, Row, Col, Button } from 'reactstrap';
 import NavBar from './Navbar';
 import { Link } from 'react-router-dom';
+import { connect } from "react-redux";
+import Login from "./Login";
 
-function InspectorHome() {
-  return (
+
+function InspectorHome(props) {
+  return (<>
+    {props.ins.user && props.ins.user.insEmail?
     <div>
       <NavBar></NavBar>
       <Container>
@@ -37,7 +41,13 @@ function InspectorHome() {
         </Row>
       </Container>
     </div>
+        : <Login />}
+      </>
   );
 }
+const mapsStateToProps = state => ({
+  ins: state.ins
+});
 
-export default InspectorHome;
+export default connect(mapsStateToProps, null)(InspectorHome);
+
