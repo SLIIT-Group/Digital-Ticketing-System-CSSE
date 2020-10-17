@@ -65,6 +65,19 @@ function PayFares(props) {
             .then(response => {
                 setExistingAmount(response.data.pasAmount);
 
+                if(response.data.userName == 'Nuwanga Passenger'){
+                    console.log('Assertion 1 passed. Username equals to Nuwanga Passenger');
+                }else{
+                    console.log('Assertion 1 failed. Username not equals to Nuwanga Passenger');
+                }
+
+                if(response.data.pasEmail == 'passenger@gmail.com'){
+                    console.log('Assertion 2 passed. email equals to passenger@gmail.com');
+                }
+                else{
+                    console.log('Assertion 2 failed. email not equals to passenger@gmail.com');
+                }
+
             })
             .catch(function (error) {
                 console.log(error);
