@@ -32,7 +32,7 @@ const Example = (props) => {
   useEffect(() => {
     console.log(props);
     if(props.ins.user) {
-      setName(props.ins.user.insUserName);
+      setName(props.ins.user.userName);
     }
   });
 

@@ -57,10 +57,10 @@ function AddCredit(props) {
 
     const updateCredit = () => {
         const req = {
-            pasUserName: 'abc',
+            userName: 'abc',
             pasEmail: 'abc',
-            pasPassword: 'abc',
-            pasAmount: 50,
+            password: 'abc',
+            pasAmount: 100,
         };
 
         let id = '5f88a946963f79b26e909f06';

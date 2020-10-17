@@ -99,9 +99,9 @@ function Register(props) {
     e.preventDefault();
 
     const newUser = {
-      pasUserName : name,
+      userName : name,
       pasEmail: email,
-      pasPassword : password,
+      password : password,
     };
 
     props.register(newUser);

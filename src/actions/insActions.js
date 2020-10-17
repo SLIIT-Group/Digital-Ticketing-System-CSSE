@@ -7,13 +7,13 @@ import axios from 'axios';
 
 /////////////////////////////////////////////////////////////////////////////
 
-export const login = ({insEmail , insPassword}) => dispatch => {
+export const login = ({insEmail , password}) => dispatch => {
     const config = {
         headers: {
             'Content-Type' : 'application/json'
         }
     }
-    const body = JSON.stringify({insEmail, insPassword});
+    const body = JSON.stringify({insEmail, password});
 
 
 
@@ -45,13 +45,13 @@ export const loadUser = () => (dispatch, getState) => {
 }
 
 /////////////////////////////////////////////////////////////////////////////////////////
-export const register = ({insUserName, insEmail, insPassword}) => dispatch => {
+export const register = ({userName, insEmail, password}) => dispatch => {
     const config = {
         headers: {
             'Content-Type' : 'application/json'
         }
     }
-    const body = JSON.stringify({insUserName,insEmail,insPassword});
+    const body = JSON.stringify({userName,insEmail,password});
 
 
 
