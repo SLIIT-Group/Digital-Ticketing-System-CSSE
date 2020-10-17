@@ -1,6 +1,5 @@
 import React, { useState, useEffect } from "react";
 import NavBar from "./Navbar";
-import swal from "sweetalert";
 import { Container, Row, Col } from "reactstrap";
 import { withStyles, makeStyles } from "@material-ui/core/styles";
 import Table from "@material-ui/core/Table";
@@ -78,7 +77,7 @@ export default function ViewPassenger() {
                         scope="row"
                         align="center"
                       >
-                        {row.pasUserName}
+                        {row.userName}
                       </StyledTableCell>
                       <StyledTableCell align="center">
                         {row.pasEmail}
