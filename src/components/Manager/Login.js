@@ -62,7 +62,9 @@ function Login(props) {
     setEmail('');
     setPassword('');
     setMsg(null);
-    props.history.push('/manager');
+    if(props.history) {
+      props.history.push('/manager');
+    }
   }
 
   const onSubmit = (e) => {

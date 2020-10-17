@@ -5,8 +5,7 @@ import { connect } from "react-redux";
 import Login from "./Login";
 
 function ManagerHome(props) {
-  return (<>
-    {props.man.user && props.man.user.manEmail?
+  return (
     <div>
       <NavBar></NavBar>
       <Container>
@@ -69,8 +68,6 @@ function ManagerHome(props) {
         </Row>
       </Container>
     </div>
-        : <Login />}
-      </>
   );
 }
 const mapsStateToProps = state => ({

@@ -54,8 +54,7 @@ function ViewPassenger(props) {
       });
   }, []);
 
-  return (<>
-    {props.man.user && props.man.user.manEmail?
+  return (
     <React.Fragment>
       <NavBar></NavBar>
       <Container>
@@ -98,8 +97,6 @@ function ViewPassenger(props) {
         </Row>
       </Container>
     </React.Fragment>
-        : <Login />}
-      </>
   );
 }
 const mapsStateToProps = state => ({

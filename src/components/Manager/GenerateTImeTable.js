@@ -3,6 +3,7 @@ import NavBar from "./Navbar";
 import swal from "sweetalert";
 import { connect } from "react-redux";
 import Login from "./Login";
+import NoAccess from "../commons/NoAccess";
 import {
   Container,
   Row,
@@ -122,8 +123,7 @@ function GenerateTImeTable(props) {
     }
   };
 
-  return (<>
-   {props.man.user && props.man.user.manEmail?
+  return (
     <React.Fragment>
       <NavBar></NavBar>
       <Container>
@@ -264,8 +264,7 @@ function GenerateTImeTable(props) {
           </Col>
         </Row>
       </Container>
-    </React.Fragment>: <Login />}
-      </>
+    </React.Fragment>
   );
 }
 const mapsStateToProps = state => ({

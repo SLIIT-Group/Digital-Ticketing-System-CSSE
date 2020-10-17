@@ -61,8 +61,7 @@ function ManagePins(props) {
   },[])
 
 
-  return (<>
-    {props.man.user && props.man.user.manEmail?
+  return (
     <React.Fragment>
       <NavBar></NavBar>
       <Container>
@@ -128,8 +127,7 @@ function ManagePins(props) {
           </Col>
         </Row>
       </Container>
-    </React.Fragment>: <Login />}
-      </>
+    </React.Fragment>
   );
 }
 const mapsStateToProps = state => ({

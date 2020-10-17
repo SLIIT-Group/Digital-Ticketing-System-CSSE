@@ -72,8 +72,7 @@ function ViewTImeTableDetails(props) {
       .catch((err) => console.log("Error"));
   };
 
-  return (<>
-    {props.man.user && props.man.user.manEmail?
+  return (
     <React.Fragment>
       <NavBar></NavBar>
       <Container>
@@ -149,8 +148,6 @@ function ViewTImeTableDetails(props) {
         </Row>
       </Container>
     </React.Fragment>
-        : <Login />}
-      </>
   );
 }
 const mapsStateToProps = state => ({
