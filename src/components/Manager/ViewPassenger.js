@@ -1,6 +1,5 @@
 import React, { useState, useEffect } from "react";
 import NavBar from "./Navbar";
-import swal from "sweetalert";
 import { Container, Row, Col } from "reactstrap";
 import { withStyles, makeStyles } from "@material-ui/core/styles";
 import Table from "@material-ui/core/Table";
@@ -10,13 +9,7 @@ import TableContainer from "@material-ui/core/TableContainer";
 import TableHead from "@material-ui/core/TableHead";
 import TableRow from "@material-ui/core/TableRow";
 import Paper from "@material-ui/core/Paper";
-import DeleteIcon from "@material-ui/icons/Delete";
-import EditIcon from "@material-ui/icons/Edit";
 
-// import axios from "axios";
-// import { Link } from "react-router-dom";
-// import EditIcon from "@material-ui/icons/Edit";
-// import DeleteIcon from "@material-ui/icons/Delete";
 const axios = require("axios");
 
 const StyledTableRow = withStyles((theme) => ({
@@ -52,30 +45,11 @@ export default function ViewPassenger() {
       .get("http://localhost:5000/api/pas/passenger")
       .then((response) => {
         setData(response.data);
-        // setSearchResults(response.data);
       })
       .catch(function (error) {
         console.log(error);
       });
   }, []);
-
-  const deleteData = (id) => {
-    axios
-      .delete(`http://localhost:5000/api/man/timeTable/${id}`)
-      .then((res) => {
-        swal("successfull", "Data Successfully removed", "success");
-
-        axios
-          .get("http://localhost:5000/api/man/timeTable")
-          .then((response) => {
-            setData(response.data);
-          })
-          .catch(function (error) {
-            console.log(error);
-          });
-      })
-      .catch((err) => console.log("Error"));
-  };
 
   return (
     <React.Fragment>
@@ -87,17 +61,12 @@ export default function ViewPassenger() {
               <Table className={classes.table} aria-label="customized table">
                 <TableHead>
                   <TableRow>
-                    <StyledTableCell align="center">
-                      UserName
-                    </StyledTableCell>
-                    
-                    <StyledTableCell align="center">
-                      Email
-                    </StyledTableCell>
+                    <StyledTableCell align="center">UserName</StyledTableCell>
+
+                    <StyledTableCell align="center">Email</StyledTableCell>
                     <StyledTableCell align="center">
                       Total Amount
                     </StyledTableCell>
-                   
                   </TableRow>
                 </TableHead>
                 <TableBody>
@@ -108,7 +77,7 @@ export default function ViewPassenger() {
                         scope="row"
                         align="center"
                       >
-                        {row.pasUserName}
+                        {row.userName}
                       </StyledTableCell>
                       <StyledTableCell align="center">
                         {row.pasEmail}
@@ -116,7 +85,6 @@ export default function ViewPassenger() {
                       <StyledTableCell align="center">
                         {row.pasAmount}
                       </StyledTableCell>
-                     
                     </StyledTableRow>
                   ))}
                 </TableBody>

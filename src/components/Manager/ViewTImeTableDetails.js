@@ -11,12 +11,6 @@ import TableHead from "@material-ui/core/TableHead";
 import TableRow from "@material-ui/core/TableRow";
 import Paper from "@material-ui/core/Paper";
 import DeleteIcon from "@material-ui/icons/Delete";
-import EditIcon from "@material-ui/icons/Edit";
-
-// import axios from "axios";
-// import { Link } from "react-router-dom";
-// import EditIcon from "@material-ui/icons/Edit";
-// import DeleteIcon from "@material-ui/icons/Delete";
 const axios = require("axios");
 
 const StyledTableRow = withStyles((theme) => ({
@@ -49,10 +43,9 @@ export default function ViewTImeTableDetails() {
 
   useEffect(() => {
     axios
-      .get("http://localhost:5000/api/man/timeTable")
+      .get("http://localhost:5000/api/timetable/timeTable")
       .then((response) => {
         setData(response.data);
-        // setSearchResults(response.data);
       })
       .catch(function (error) {
         console.log(error);
@@ -61,12 +54,12 @@ export default function ViewTImeTableDetails() {
 
   const deleteData = (id) => {
     axios
-      .delete(`http://localhost:5000/api/man/timeTable/${id}`)
+      .delete(`http://localhost:5000/api/timetable/timeTable/${id}`)
       .then((res) => {
         swal("successfull", "Data Successfully removed", "success");
 
         axios
-          .get("http://localhost:5000/api/man/timeTable")
+          .get("http://localhost:5000/api/timetable/timeTable")
           .then((response) => {
             setData(response.data);
           })
@@ -101,7 +94,6 @@ export default function ViewTImeTableDetails() {
                     <StyledTableCell align="center">End Time</StyledTableCell>
                     <StyledTableCell align="center">Distance</StyledTableCell>
                     <StyledTableCell align="center">Unit Price</StyledTableCell>
-                    {/* <StyledTableCell align="center">Edit</StyledTableCell> */}
                     <StyledTableCell align="center">Delete</StyledTableCell>
                   </TableRow>
                 </TableHead>
@@ -136,19 +128,10 @@ export default function ViewTImeTableDetails() {
                       <StyledTableCell align="center">
                         {row.unitPrice}
                       </StyledTableCell>
-                      {/* <TableCell align="center">
-                        {" "}
-                        <EditIcon
-                        // onClick={() => {
-                        //   onClick(item._id);
-                        // }}
-                        ></EditIcon>
-                      </TableCell> */}
                       <TableCell align="center">
                         <DeleteIcon
                           onClick={() => {
                             deleteData(row._id);
-                            console.log(row._id);
                           }}
                         >
                           {" "}
