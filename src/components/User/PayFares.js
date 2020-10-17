@@ -40,6 +40,8 @@ function PayFares(props) {
     return (
         <>
             {props.pas.user && props.pas.user.pasEmail?
+        <div>
+        <NavBar></NavBar>
         <Container>
             <Row style={{ marginTop: '8em' }}>
                 <Col sm='12' md={{ size: 6, offset: 3 }}>
@@ -140,7 +142,8 @@ function PayFares(props) {
                     </Card>
                 </Col>
             </Row>
-        </Container>: <Login />}
+        </Container>
+        </div>: <Login />}
         </>
     );
 }
