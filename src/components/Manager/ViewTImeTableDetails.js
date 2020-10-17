@@ -15,6 +15,7 @@ import { connect } from "react-redux";
 import Login from "./Login";
 const axios = require("axios");
 
+//Styles
 const StyledTableRow = withStyles((theme) => ({
   root: {
     "&:nth-of-type(odd)": {
@@ -41,8 +42,9 @@ const useStyles = makeStyles({
 
 function ViewTImeTableDetails(props) {
   const classes = useStyles();
-  const [data, setData] = useState([]);
+  const [data, setData] = useState([]); //hooks
 
+  //Functions, Api calls to get data and delete data from the database
   useEffect(() => {
     axios
       .get("http://localhost:5000/api/timetable/timeTable")
@@ -152,8 +154,8 @@ function ViewTImeTableDetails(props) {
   </>
   );
 }
-const mapsStateToProps = state => ({
-  man: state.man
+const mapsStateToProps = (state) => ({
+  man: state.man,
 });
 
 export default connect(mapsStateToProps, null)(ViewTImeTableDetails);
