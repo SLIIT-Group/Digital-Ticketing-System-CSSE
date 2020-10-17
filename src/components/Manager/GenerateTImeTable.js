@@ -2,8 +2,6 @@ import React, { useState } from "react";
 import NavBar from "./Navbar";
 import swal from "sweetalert";
 import { connect } from "react-redux";
-import Login from "./Login";
-import NoAccess from "../commons/NoAccess";
 import {
   Container,
   Row,
@@ -21,8 +19,9 @@ import {
 } from "reactstrap";
 import { NavLink } from "react-router-dom";
 import MenuItem from "@material-ui/core/MenuItem";
-import TextField from "@material-ui/core/TextField";
+import TextField from "@material-ui/core/TextField"; //Relevant Imports
 
+// Locations Array
 const locations = [
   "Colombo",
   "kandy",
@@ -58,8 +57,9 @@ function GenerateTImeTable(props) {
   const [startTime, setStartTime] = useState("");
   const [endTime, setEndTime] = useState("");
   const [distance, setDistance] = useState("");
-  const [price, setPrice] = useState("");
+  const [price, setPrice] = useState(""); //relevant hooks
 
+  //Relevant Functions
   const filteredLocation = locations.filter(
     (location_filter) => location_filter !== startLocation
   );
@@ -104,10 +104,11 @@ function GenerateTImeTable(props) {
           startLocation: startLocation,
           endLocation: endLocation,
           arrivalTime: endTime,
-          distance:distance,
-          unitPrice:price
+          distance: distance,
+          unitPrice: price,
         }),
       };
+       //Api call to post data to the database
       fetch("http://localhost:5000/api/timetable/timeTable", requestOptions)
         .then((response) => response.json())
         .then((data) => {
@@ -267,9 +268,8 @@ function GenerateTImeTable(props) {
     </React.Fragment>
   );
 }
-const mapsStateToProps = state => ({
-  man: state.man
+const mapsStateToProps = (state) => ({
+  man: state.man,
 });
 
 export default connect(mapsStateToProps, null)(GenerateTImeTable);
-
