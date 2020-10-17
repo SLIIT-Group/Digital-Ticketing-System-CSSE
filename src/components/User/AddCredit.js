@@ -1,10 +1,6 @@
 import React, {useEffect, useState} from 'react';
 import axios from "axios";
-import { BrowserRouter as Router, Route, Link, Switch } from "react-router-dom";
 import swal from "sweetalert";
-import { connect } from "react-redux";
-import PropTypes from "prop-types";
-
 import {
     Container,
     Row,
@@ -23,6 +19,8 @@ import {
 import { NavLink } from 'react-router-dom';
 import MenuItem from '@material-ui/core/MenuItem';
 import TextField from '@material-ui/core/TextField';
+import { connect } from "react-redux";
+import Login from "./Login";
 
 
 const paymentMethod = [
@@ -69,6 +67,8 @@ function AddCredit(props) {
     };
 
     return (
+        <>
+            {props.pas.user && props.pas.user.pasEmail?
         <Container>
             <Row style={{ marginTop: '8em' }}>
                 <Col sm='12' md={{ size: 6, offset: 3 }}>
@@ -151,8 +151,8 @@ function AddCredit(props) {
                     </Card>
                 </Col>
             </Row>
-        </Container>
-    );
+        </Container>: <Login />}
+        </>);
 }
 
 const mapsStateToProps = state => ({

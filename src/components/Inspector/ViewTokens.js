@@ -14,6 +14,8 @@ import tokens from '../../data/tokenData';
 import buses from '../../data/busData';
 import { useEffect } from 'react';
 import { Link } from 'react-router-dom';
+import { connect } from "react-redux";
+import Login from "./Login";
 
 function ViewTokens(props) {
   const data = props.location;
@@ -83,7 +85,8 @@ function ViewTokens(props) {
     filterTokens(tokenFilter);
   }, []);
 
-  return (
+  return (<>
+    {props.ins.user && props.ins.user.insEmail?
     <div>
       <NavBar></NavBar>
 
@@ -125,7 +128,13 @@ function ViewTokens(props) {
         )}
       </Container>
     </div>
+      : <Login />}
+</>
   );
 }
+const mapsStateToProps = state => ({
+  ins: state.ins
+});
 
-export default ViewTokens;
+export default connect(mapsStateToProps, null)(ViewTokens);
+

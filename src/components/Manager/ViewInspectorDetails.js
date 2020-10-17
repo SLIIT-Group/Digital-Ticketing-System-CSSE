@@ -5,6 +5,8 @@ import { withStyles, makeStyles } from "@material-ui/core/styles";
 import TableCell from "@material-ui/core/TableCell";
 import TableRow from "@material-ui/core/TableRow";
 import Token  from './inspectorRow'
+import { connect } from "react-redux";
+import Login from "./Login";
 
 
 const axios = require("axios");
@@ -33,7 +35,7 @@ const useStyles = makeStyles({
   },
 });
 
-export default function ViewInspectorDetails() {
+function ViewInspectorDetails(props) {
   const classes = useStyles();
   const [data, setData] = useState([]);
 
@@ -48,7 +50,8 @@ export default function ViewInspectorDetails() {
       });
   }, []);
 
-  return (
+  return (<>
+    {props.man.user && props.man.user.manEmail?
     <React.Fragment>
       <NavBar></NavBar>
       <Container style={{ margin: '20px 0px', overflowX: 'hidden' }}>
@@ -69,5 +72,12 @@ export default function ViewInspectorDetails() {
         )}
       </Container>
     </React.Fragment>
+        : <Login />}
+      </>
   );
 }
+const mapsStateToProps = state => ({
+  man: state.man
+});
+
+export default connect(mapsStateToProps, null)(ViewInspectorDetails);

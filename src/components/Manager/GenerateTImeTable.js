@@ -1,7 +1,8 @@
 import React, { useState } from "react";
 import NavBar from "./Navbar";
 import swal from "sweetalert";
-
+import { connect } from "react-redux";
+import Login from "./Login";
 import {
   Container,
   Row,
@@ -48,7 +49,7 @@ const locations = [
   "Vavuniya",
 ];
 
-function GenerateTImeTable() {
+function GenerateTImeTable(props) {
   const [startLocation, setStartLocation] = useState("");
   const [endLocation, setEndLocation] = useState("");
   const [routeNumber, setRouteNumber] = useState("");
@@ -121,7 +122,8 @@ function GenerateTImeTable() {
     }
   };
 
-  return (
+  return (<>
+   {props.man.user && props.man.user.manEmail?
     <React.Fragment>
       <NavBar></NavBar>
       <Container>
@@ -262,8 +264,13 @@ function GenerateTImeTable() {
           </Col>
         </Row>
       </Container>
-    </React.Fragment>
+    </React.Fragment>: <Login />}
+      </>
   );
 }
+const mapsStateToProps = state => ({
+  man: state.man
+});
 
-export default GenerateTImeTable;
+export default connect(mapsStateToProps, null)(GenerateTImeTable);
+

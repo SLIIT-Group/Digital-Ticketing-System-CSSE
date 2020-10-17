@@ -1,11 +1,15 @@
 import React from 'react';
 import { Container, Row, Col, Button } from 'reactstrap';
 import NavBar from './Navbar';
-import Account from './AccountDetails';
 import { NavLink } from 'react-router-dom';
+import { connect } from "react-redux";
+import Login from "./Login";
 
-function UserHome() {
-  return (
+
+
+function UserHome(props) {
+  return (<>
+    {props.pas.user && props.pas.user.pasEmail?
     <div>
       <NavBar></NavBar>
       <Container>
@@ -51,7 +55,11 @@ function UserHome() {
         </Row>
       </Container>
     </div>
-  );
+        : <Login />}
+  </>);
 }
+const mapsStateToProps = state => ({
+  pas: state.pas
+});
 
-export default UserHome;
+export default connect(mapsStateToProps, null)(UserHome);
