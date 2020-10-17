@@ -40,7 +40,7 @@ function Token({ token }) {
             <Col style={subheaderStyle}>Email</Col>
           </Row>
           <Row xs='2'>
-            <Col style={infoStyle}>{token.insUserName}</Col>
+            <Col style={infoStyle}>{token.userName}</Col>
 
             <Col style={infoStyle}>{token.insEmail}</Col>
           </Row>

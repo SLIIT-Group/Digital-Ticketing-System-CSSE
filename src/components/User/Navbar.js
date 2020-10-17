@@ -32,7 +32,7 @@ function Example (props) {
 
   useEffect(() => {
     if(props.pas.user) {
-      setName(props.pas.user.pasUserName);
+      setName(props.pas.user.userName);
     }
   });
   return (

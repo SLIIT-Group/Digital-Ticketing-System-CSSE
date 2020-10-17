@@ -70,7 +70,7 @@ function Login(props) {
 
     const existUser = {
       pasEmail: email,
-      pasPassword : password,
+      password : password,
     };
 
     props.login(existUser);

@@ -118,9 +118,9 @@ function Register(props) {
       e.preventDefault();
 
       const newUser = {
-        insUserName : name,
+        userName : name,
         insEmail: email,
-        insPassword : password,
+        password : password,
       };
 
       props.register(newUser);
