@@ -12,6 +12,7 @@ import { logout } from "../../actions/pasActions";
 import { connect } from "react-redux";
 import PropTypes from "prop-types";
 import swal from "sweetalert";
+import {useHistory} from "react-router";
 
 function Example (props) {
 
@@ -19,10 +20,11 @@ function Example (props) {
     logout: PropTypes.func.isRequired,
   };
 
+  const history = useHistory();
   const logoutUser = (e) => {
     e.preventDefault();
     props.logout();
-    /*props.history.push('/');*/
+    history.push('/');
   };
 
   const [collapsed, setCollapsed] = useState(true);
@@ -60,7 +62,7 @@ function Example (props) {
                 </Button></NavLink>
             </NavItem>
             <NavItem>
-              <NavLink href='/generateTimeTable' className="justify-content-center text-left pb-1">
+              <NavLink href='/user' className="justify-content-center text-left pb-1">
                 <Button className='border border-warning text-left font-weight-bold text-warning'
                         style={{width: '100%' ,backgroundColor: '#292b2c'}}>
                   Token

@@ -1,4 +1,4 @@
-import {USER_LOADING,USER_LOADED,REGISTER_FAIL,REGISTER_SUCCESS,LOGOUT_SUCCESS,LOGIN_FAIL,LOGIN_SUCCESS,AUTH_ERROR} from "./types";
+import {USER_LOADINGM,USER_LOADEDM,REGISTER_FAILM,REGISTER_SUCCESSM,LOGOUT_SUCCESSM,LOGIN_FAILM,LOGIN_SUCCESSM,AUTH_ERRORM} from "./types";
 import {returnErrors} from "./errorActions";
 import axios from 'axios';
 
@@ -18,12 +18,12 @@ export const login = ({manEmail , password}) => dispatch => {
 
 
     axios.post('http://localhost:5000/api/man/login', body, config).then(res => dispatch({
-        type:LOGIN_SUCCESS,
+        type:LOGIN_SUCCESSM,
         payload: res.data
     })).catch(error => {
         dispatch(returnErrors(error.response.data, error.response.status, 'LOGIN_FAIL'));
         dispatch({
-            type: LOGIN_FAIL
+            type: LOGIN_FAILM
         }) ;
     });
 
@@ -32,14 +32,14 @@ export const login = ({manEmail , password}) => dispatch => {
 
 /////////////////////////////////////////////////////////////////////////////////
 export const loadUser = () => (dispatch, getState) => {
-    dispatch ({type: USER_LOADING});
+    dispatch ({type: USER_LOADINGM});
 
     axios.get('http://localhost:5000/api/man/token', tokenConfig(getState)).then(res => dispatch({
-        type: USER_LOADED,
+        type: USER_LOADEDM,
         payload: res.data
     })).catch(error => {
         dispatch({
-            type:AUTH_ERROR
+            type:AUTH_ERRORM
         })
     });
 }
@@ -56,12 +56,12 @@ export const register = ({userName, manEmail, password}) => dispatch => {
 
 
     axios.post('http://localhost:5000/api/man/register', body, config).then(res => dispatch({
-        type:REGISTER_SUCCESS,
+        type:REGISTER_SUCCESSM,
         payload: res.data
     })).catch(error => {
         dispatch(returnErrors(error.response.data, error.response.status, 'REGISTER_FAIL'));
         dispatch({
-           type: REGISTER_FAIL
+           type: REGISTER_FAILM
        }) ;
     });
 
@@ -70,7 +70,7 @@ export const register = ({userName, manEmail, password}) => dispatch => {
 
 export const logout = () => {
     return{
-        type : LOGOUT_SUCCESS
+        type : LOGOUT_SUCCESSM
     };
 };
 

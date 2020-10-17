@@ -21,6 +21,7 @@ import {
   Input,
 } from 'reactstrap';
 import { NavLink } from 'react-router-dom';
+import {useHistory} from "react-router";
 
 function Login(props) {
   let propTypes = {
@@ -44,6 +45,7 @@ function Login(props) {
 
   const prevProps = useRef();
   useEffect(() => {
+
     if(props.error !== prevProps.error){
       if(props.error.id === 'LOGIN_FAIL'){
         setMsg(props.error.msg.msg);
@@ -57,14 +59,14 @@ function Login(props) {
     }
   });
 
-  const loginClose = () => {
+  const history = useHistory();
+  const loginClose = (e) => {
+
     clearErrors();
     setEmail('');
     setPassword('');
     setMsg(null);
-    if(props.history) {
-      props.history.push('/manager');
-    }
+    history.push('/manager');
   }
 
   const onSubmit = (e) => {

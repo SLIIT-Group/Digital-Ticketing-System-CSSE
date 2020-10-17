@@ -12,6 +12,7 @@ import TableRow from "@material-ui/core/TableRow";
 import Paper from "@material-ui/core/Paper";
 import DeleteIcon from "@material-ui/icons/Delete";
 import { connect } from "react-redux";
+import Login from "./Login";
 const axios = require("axios");
 
 const StyledTableRow = withStyles((theme) => ({
@@ -71,7 +72,8 @@ function ViewTImeTableDetails(props) {
       .catch((err) => console.log("Error"));
   };
 
-  return (
+  return (<>
+    {props.man && props.man.userEmail !== null ?
     <React.Fragment>
       <NavBar></NavBar>
       <Container>
@@ -146,7 +148,8 @@ function ViewTImeTableDetails(props) {
           </Col>
         </Row>
       </Container>
-    </React.Fragment>
+    </React.Fragment>: <Login />}
+  </>
   );
 }
 const mapsStateToProps = state => ({

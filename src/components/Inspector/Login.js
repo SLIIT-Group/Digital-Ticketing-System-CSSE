@@ -63,6 +63,8 @@ function Login(props) {
     setPassword('');
     setMsg(null);
     props.history.push('/inspector');
+
+
   }
 
   const onSubmit = (e) => {

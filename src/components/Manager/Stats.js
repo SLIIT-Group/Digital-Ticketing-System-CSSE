@@ -47,7 +47,8 @@ function Stats(props) {
     },
   ];
 
-  return (
+  return (<>
+    {props.man && props.man.userEmail !== null ?
     <React.Fragment>
       <NavBar></NavBar>
       <Container>
@@ -64,6 +65,8 @@ function Stats(props) {
         </Row>
       </Container>
     </React.Fragment>
+        : <Login />}
+      </>
   );
 }
 const mapsStateToProps = state => ({

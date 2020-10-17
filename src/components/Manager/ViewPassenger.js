@@ -3,10 +3,10 @@ import NavBar from "./Navbar";
 import { Container, Toast, ToastHeader, CardColumns } from "reactstrap";
 import { connect } from "react-redux";
 import PassengerRow from "./passengerRow";
-
+import Login from "./Login";
 const axios = require("axios");
-
 function ViewPassenger(props) {
+
   const [data, setData] = useState([]);
 
   useEffect(() => {
@@ -20,7 +20,8 @@ function ViewPassenger(props) {
       });
   }, []);
 
-  return (
+  return (<>
+    {props.man && props.man.userEmail !== null ?
     <React.Fragment>
       <NavBar></NavBar>
       <Container style={{ margin: "20px 0px", overflowX: "hidden" }}>
@@ -41,6 +42,8 @@ function ViewPassenger(props) {
         )}
       </Container>
     </React.Fragment>
+      : <Login />}
+    </>
   );
 }
 const mapsStateToProps = (state) => ({

@@ -113,9 +113,8 @@ function Register(props) {
   };
 
   const onSubmit = (e) => {
+    e.preventDefault();
     if(managerPin === pin){
-      e.preventDefault();
-
       const newUser = {
         userName : name,
         manEmail: email,

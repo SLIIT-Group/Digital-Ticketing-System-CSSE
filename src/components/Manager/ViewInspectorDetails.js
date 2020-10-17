@@ -50,7 +50,8 @@ function ViewInspectorDetails(props) {
       });
   }, []);
 
-  return (
+  return (<>
+    {props.man && props.man.userEmail !== null ?
     <React.Fragment>
       <NavBar></NavBar>
       <Container style={{ margin: '20px 0px', overflowX: 'hidden' }}>
@@ -71,6 +72,8 @@ function ViewInspectorDetails(props) {
         )}
       </Container>
     </React.Fragment>
+        : <Login />}
+      </>
   );
 }
 const mapsStateToProps = state => ({

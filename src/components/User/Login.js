@@ -21,6 +21,7 @@ import {
   Input,
 } from 'reactstrap';
 import { NavLink } from 'react-router-dom';
+import {useHistory} from "react-router";
 
 function Login(props) {
   let propTypes = {
@@ -56,13 +57,13 @@ function Login(props) {
     }
   });
 
-
+  const history = useHistory();
   const loginClose = () => {
     clearErrors();
     setEmail('');
     setPassword('');
     setMsg(null);
-    props.history.push('/user');
+    history.push('/user');
   }
 
   const onSubmit = (e) => {

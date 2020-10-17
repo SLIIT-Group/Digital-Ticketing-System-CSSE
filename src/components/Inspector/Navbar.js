@@ -12,28 +12,21 @@ import { logout } from "../../actions/insActions";
 import { connect } from "react-redux";
 import PropTypes from "prop-types";
 import swal from "sweetalert";
+import {useHistory} from "react-router";
 
 const Example = (props) => {
   let propTypes = {
     logout: PropTypes.func.isRequired,
   };
-
+  const history = useHistory();
   const logoutUser = (e) => {
     e.preventDefault();
     props.logout();
+    history.push('/');
   };
   const [collapsed, setCollapsed] = useState(true);
 
-  const [name, setName] = useState('');
-
   const toggleNavbar = () => setCollapsed(!collapsed);
-
-  useEffect(() => {
-    console.log(props);
-    if(props.ins.user) {
-      setName(props.ins.user.userName);
-    }
-  });
 
   return (
     <div>
@@ -48,7 +41,7 @@ const Example = (props) => {
               <NavLink href='/inspector' className="justify-content-center text-center"><Button
                   style={{ backgroundColor: '#f0ad4e', width: '100%' }}
               >
-                Inspector : {name}
+                Inspector : {localStorage.getItem('userName')}
               </Button></NavLink>
             </NavItem>
             <NavItem>

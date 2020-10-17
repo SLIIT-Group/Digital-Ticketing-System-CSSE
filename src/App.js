@@ -10,7 +10,6 @@ import ManagerHome from './components/Manager/ManagerHome';
 import InspectorHome from './components/Inspector/InspectorHome';
 import AddCredit from "./components/User/AddCredit";
 import PayFares from "./components/User/PayFares";
-import disableBrowserBackButton from 'disable-browser-back-navigation';
 import ViewTokens from './components/Inspector/ViewTokens';
 import PassengerDetails from './components/Inspector/PassengerDetails';
 import TokenForm from './components/Inspector/TokenForm';
@@ -25,13 +24,11 @@ import ViewPassenger from './components/Manager/ViewPassenger';
 import ViewInspectorDetails from './components/Manager/ViewInspectorDetails';
 import Stats from './components/Manager/Stats';
 import NoAccess from "./components/commons/NoAccess";
-
 import ManagePins from './components/Manager/ManagePins'
 
 function App() {
   useEffect(() => {
     store.dispatch(loadUser());
-    disableBrowserBackButton();
   });
   return (
     <Router>

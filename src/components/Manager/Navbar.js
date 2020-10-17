@@ -12,32 +12,27 @@ import { logout } from "../../actions/manActions";
 import { connect } from "react-redux";
 import PropTypes from "prop-types";
 import swal from "sweetalert";
+import {useHistory} from "react-router";
 
 const Example = (props) => {
   let propTypes = {
     logout: PropTypes.func.isRequired,
   };
 
+  const history = useHistory();
   const logoutUser = (e) => {
     e.preventDefault();
     props.logout();
-    /*props.history.push('/');*/
+    history.push('/');
   };
   const [collapsed, setCollapsed] = useState(true);
 
-  const [name, setName] = useState('');
-
   const toggleNavbar = () => setCollapsed(!collapsed);
 
-  useEffect(() => {
-    console.log(props);
-    if(props.man.user) {
-      setName(props.man.user.userName);
-    }
-  });
 
   return (
     <div>
+      {console.log(props)}
       <Navbar color='dark' dark>
         <NavbarBrand href='/' className='mr-auto font-weight-bold text-warning'>
           E-TickeT !
@@ -48,7 +43,7 @@ const Example = (props) => {
             <NavItem>
               <NavLink href='/manager' className="justify-content-center text-center"><Button
                   style={{ backgroundColor: '#f0ad4e', width: '100%' }}>
-                Manager : {name}
+                Manager : {localStorage.getItem('userName')}
               </Button></NavLink>
             </NavItem>
             <NavItem>

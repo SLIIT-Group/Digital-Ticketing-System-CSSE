@@ -28,7 +28,7 @@ function TokenForm(props) {
   };
 
   return (<>
-    {props.ins.user && props.ins.user.insEmail?
+    {props.ins && props.ins.userEmail !== null ?
     <div>
       <NavBar></NavBar>
       <Container>
