@@ -1,14 +1,15 @@
 import React, { useState, useEffect } from "react";
 import NavBar from "./Navbar";
+<<<<<<< HEAD
 import { Container, Row, Col } from "reactstrap";
+=======
+import {Container, Row, Col, Toast, ToastHeader, ToastBody, Button, CardColumns} from "reactstrap";
+>>>>>>> main
 import { withStyles, makeStyles } from "@material-ui/core/styles";
-import Table from "@material-ui/core/Table";
-import TableBody from "@material-ui/core/TableBody";
 import TableCell from "@material-ui/core/TableCell";
-import TableContainer from "@material-ui/core/TableContainer";
-import TableHead from "@material-ui/core/TableHead";
 import TableRow from "@material-ui/core/TableRow";
-import Paper from "@material-ui/core/Paper";
+import Token  from './inspectorRow'
+
 
 const axios = require("axios");
 
@@ -54,6 +55,7 @@ export default function ViewInspectorDetails() {
   return (
     <React.Fragment>
       <NavBar></NavBar>
+<<<<<<< HEAD
       <Container>
         <Row style={{ marginTop: "4em", marginBottom: "4em" }}>
           <Col sm="12" md={{ size: 12, offset: 0 }}>
@@ -86,6 +88,24 @@ export default function ViewInspectorDetails() {
             </TableContainer>
           </Col>
         </Row>
+=======
+      <Container style={{ margin: '20px 0px', overflowX: 'hidden' }}>
+        {setData.length === 0 ? (
+            <div className='p-3 my-2 rounded'>
+              <Toast>
+                <ToastHeader style={{ color: '#f4f4f4' }} className='bg-warning'>
+                  No results found
+                </ToastHeader>
+              </Toast>
+            </div>
+        ) : (
+            <CardColumns>
+              {data.map((token) => (
+                  <Token token={token}></Token>
+              ))}
+            </CardColumns>
+        )}
+>>>>>>> main
       </Container>
     </React.Fragment>
   );
