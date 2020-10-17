@@ -41,23 +41,29 @@ const paymentMethod = [
 ];
 
 function AddCredit(props) {
-    useEffect(() => {
-        if(props.pas.user) {
-            setId(props.pas.user._id);
-        }
-    })
+    const [amount, setAmount] = useState('');
 
-    const [id, setId] = useState('');
+    const handleAmount = (event) => {
+        setAmount(event.target.value);
+    }
+
+    // useEffect(() => {
+    //     if(props.pas.user) {
+    //         setId(props.pas.user._id);
+    //     }
+    // })
+
+    //const [id, setId] = useState('');
 
     const updateCredit = () => {
         const req = {
             pasUserName: 'abc',
             pasEmail: 'abc',
             pasPassword: 'abc',
-            pasAmount: 100,
+            pasAmount: 50,
         };
 
-        /*let id = '5f88a946963f79b26e909f06';*/
+        let id = '5f88a946963f79b26e909f06';
         axios.post('http://localhost:5000/api/passenger/updateCredit/' +id, req)
             .then((res) => {
                 if(res.data == 'Update complete'){
@@ -66,6 +72,7 @@ function AddCredit(props) {
                     swal("Unsuccessful", "Error while updating details", "error");
                 }
             });
+        console.log(amount);
     };
 
     return (
@@ -102,6 +109,7 @@ function AddCredit(props) {
                                             name='amount'
                                             id='amount'
                                             placeholder='Rs.'
+                                            onChange = {handleAmount}
                                         />
                                     </FormGroup>
                                     <FormGroup>
@@ -155,9 +163,10 @@ function AddCredit(props) {
     );
 }
 
-const mapsStateToProps = state => ({
-    pas: state.pas
-});
+// const mapsStateToProps = state => ({
+//     pas: state.pas
+// });
 
-export default connect(mapsStateToProps, null )(AddCredit);
+//export default connect(mapsStateToProps, null )(AddCredit);
+export default AddCredit;
 
