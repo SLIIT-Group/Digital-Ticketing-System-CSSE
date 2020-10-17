@@ -51,13 +51,13 @@ function Stats(props) {
     <React.Fragment>
       <NavBar></NavBar>
       <Container>
-        <Row style={{ marginTop: "4em", marginBottom: "4em" }}>
-          <Col sm="12" md={{ size: 12, offset: 2 }}>
+        <Row style={{ marginTop: "10em", marginBottom: "4em" }}>
+          <Col sm="12" md={{ size: 12, offset: 0 }}>
             <Chart
               options={options}
               series={series}
               type="bar"
-              width={500}
+              width={350}
               height={320}
             />
           </Col>
