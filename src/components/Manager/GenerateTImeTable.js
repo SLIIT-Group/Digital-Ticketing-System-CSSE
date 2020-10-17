@@ -20,6 +20,7 @@ import {
 import { NavLink } from "react-router-dom";
 import MenuItem from "@material-ui/core/MenuItem";
 import TextField from "@material-ui/core/TextField"; //Relevant Imports
+import Login from "./Login";
 
 // Locations Array
 const locations = [
@@ -125,7 +126,7 @@ function GenerateTImeTable(props) {
   };
 
   return (<>
-        {props.man && props.man.userEmail !== null ?
+    {props.man && props.man.userEmail !== null ?
     <React.Fragment>
       <NavBar></NavBar>
       <Container>

@@ -3,7 +3,9 @@ import NavBar from "./Navbar";
 import { Container, Row, Col } from "reactstrap";
 import Chart from "react-apexcharts";
 import { connect } from "react-redux";
+import Login from "./Login";
 const axios = require("axios"); //Relevant Imports
+
 
 function Stats(props) {
   const [inspectors, setInspectors] = useState([]);
