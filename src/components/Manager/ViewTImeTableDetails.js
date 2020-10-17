@@ -11,9 +11,10 @@ import TableHead from "@material-ui/core/TableHead";
 import TableRow from "@material-ui/core/TableRow";
 import Paper from "@material-ui/core/Paper";
 import DeleteIcon from "@material-ui/icons/Delete";
-import { connect } from "react-redux";
+import { connect } from "react-redux"; // Relevant Imports
 const axios = require("axios");
 
+//Styles
 const StyledTableRow = withStyles((theme) => ({
   root: {
     "&:nth-of-type(odd)": {
@@ -40,8 +41,9 @@ const useStyles = makeStyles({
 
 function ViewTImeTableDetails(props) {
   const classes = useStyles();
-  const [data, setData] = useState([]);
+  const [data, setData] = useState([]); //hooks
 
+  //Functions, Api calls to get data and delete data from the database
   useEffect(() => {
     axios
       .get("http://localhost:5000/api/timetable/timeTable")
@@ -149,8 +151,8 @@ function ViewTImeTableDetails(props) {
     </React.Fragment>
   );
 }
-const mapsStateToProps = state => ({
-  man: state.man
+const mapsStateToProps = (state) => ({
+  man: state.man,
 });
 
 export default connect(mapsStateToProps, null)(ViewTImeTableDetails);

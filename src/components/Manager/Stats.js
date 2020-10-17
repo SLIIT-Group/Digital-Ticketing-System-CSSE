@@ -3,13 +3,13 @@ import NavBar from "./Navbar";
 import { Container, Row, Col } from "reactstrap";
 import Chart from "react-apexcharts";
 import { connect } from "react-redux";
-import Login from "./Login";
-const axios = require("axios");
+const axios = require("axios"); //Relevant Imports
 
 function Stats(props) {
   const [inspectors, setInspectors] = useState([]);
-  const [passengers, setPassengers] = useState([]);
+  const [passengers, setPassengers] = useState([]); //hooks
 
+  //functions
   useEffect(() => {
     axios
       .get("http://localhost:5000/api/ins/inspectors")

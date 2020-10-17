@@ -3,12 +3,12 @@ import NavBar from "./Navbar";
 import { Container, Toast, ToastHeader, CardColumns } from "reactstrap";
 import { connect } from "react-redux";
 import PassengerRow from "./passengerRow";
-
-const axios = require("axios");
+const axios = require("axios"); //Relevant Imports
 
 function ViewPassenger(props) {
-  const [data, setData] = useState([]);
+  const [data, setData] = useState([]); //hooks
 
+  //functions, api calls to get data from the database
   useEffect(() => {
     axios
       .get("http://localhost:5000/api/pas/passenger")
@@ -35,7 +35,7 @@ function ViewPassenger(props) {
         ) : (
           <CardColumns>
             {data.map((token) => (
-              <PassengerRow token={token}></PassengerRow>
+              <PassengerRow token={token} key={token._id}></PassengerRow>
             ))}
           </CardColumns>
         )}
