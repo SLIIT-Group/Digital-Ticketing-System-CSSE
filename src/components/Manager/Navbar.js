@@ -52,20 +52,51 @@ const Example = (props) => {
               </Button></NavLink>
             </NavItem>
             <NavItem>
-              <NavLink href='/user' className="justify-content-center text-center"><Button className='btn btn-warning'
-              style={{width: '50%' }}>
-                User
+              <NavLink href='/manager' className="justify-content-center text-left pb-1">
+                <Button className='border border-warning text-left font-weight-bold text-warning'
+                        style={{width: '100%' ,backgroundColor: '#292b2c'}}>
+                  Home
+                </Button></NavLink>
+            </NavItem>
+            <NavItem>
+              <NavLink href='/generateTimeTable' className="justify-content-center text-left pb-1">
+                <Button className='border border-warning text-left font-weight-bold text-warning'
+                        style={{width: '100%' ,backgroundColor: '#292b2c'}}>
+                  Timetables
+                </Button></NavLink>
+            </NavItem>
+            <NavItem>
+              <NavLink href='/stats'  className="justify-content-center text-left pb-1">
+                <Button className='border border-warning text-left font-weight-bold text-warning'
+                        style={{width: '100%' ,backgroundColor: '#292b2c'}}>
+                  Statistical Reports
+                </Button></NavLink>
+            </NavItem>
+            <NavItem>
+              <NavLink href='/pins' className="justify-content-center text-left pb-1">
+                <Button className='border border-warning text-left font-weight-bold text-warning'
+                        style={{width: '100%' ,backgroundColor: '#292b2c'}}>
+                  Pins
               </Button></NavLink>
             </NavItem>
             <NavItem>
-              <NavLink href='/manager' className="justify-content-center text-center"><Button className='btn btn-warning'
-              style={{ width: '50%' }}>
-                Manager
-              </Button></NavLink>
+              <NavLink href='/viewInspectors' className="justify-content-center text-left pb-1">
+                <Button className='border border-warning text-left font-weight-bold text-warning'
+                        style={{width: '100%' ,backgroundColor: '#292b2c'}}>
+                  Inspectors
+                </Button></NavLink>
             </NavItem>
             <NavItem>
-              <NavLink href='/' className="justify-content-center text-center"><Button className='btn btn-warning'
-              style={{width: '50%' }} onClick={logoutUser}>
+              <NavLink href='/viewPassenger' className="justify-content-center text-left pb-1">
+                <Button className='border border-warning text-left font-weight-bold text-warning'
+                        style={{width: '100%' ,backgroundColor: '#292b2c'}}>
+                  Passengers
+                </Button></NavLink>
+            </NavItem>
+            <NavItem>
+              <NavLink href='/' className="justify-content-center text-left pb-1">
+                <Button className='border border-warning text-left font-weight-bold text-warning'
+                        style={{width: '100%' ,backgroundColor: '#292b2c'}} onClick={logoutUser}>
                 Logout
               </Button></NavLink>
             </NavItem>

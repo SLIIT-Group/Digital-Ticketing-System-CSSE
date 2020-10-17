@@ -53,27 +53,44 @@ function Example (props) {
               </Button></NavLink>
             </NavItem>
             <NavItem>
-                <NavLink href='/user' className="justify-content-center text-center"><Button className='btn btn-warning'
-                                                                                             style={{width: '50%' }}>
-                  User
+              <NavLink href='/user' className="justify-content-center text-left pb-1">
+                <Button className='border border-warning text-left font-weight-bold text-warning'
+                        style={{width: '100%' ,backgroundColor: '#292b2c'}}>
+                  Home
                 </Button></NavLink>
             </NavItem>
             <NavItem>
-                <NavLink href='/manager' className="justify-content-center text-center"><Button className='btn btn-warning'
-                                                                                                style={{ width: '50%' }}>
-                  Manager
+              <NavLink href='/generateTimeTable' className="justify-content-center text-left pb-1">
+                <Button className='border border-warning text-left font-weight-bold text-warning'
+                        style={{width: '100%' ,backgroundColor: '#292b2c'}}>
+                  Token
                 </Button></NavLink>
             </NavItem>
             <NavItem>
-              <NavLink href='/inspector' className="justify-content-center text-center"><Button className='btn btn-warning'
-                                                                                              style={{ width: '50%' }}>
-                Inspector
-              </Button></NavLink>
+              <NavLink href='/user/account'  className="justify-content-center text-left pb-1">
+                <Button className='border border-warning text-left font-weight-bold text-warning'
+                        style={{width: '100%' ,backgroundColor: '#292b2c'}}>
+                  Account
+                </Button></NavLink>
             </NavItem>
             <NavItem>
-                <NavLink className="justify-content-center text-center"><Button className='btn btn-warning'
-                                                                                         style={{width: '50%' }}
-                                                                                         onClick={logoutUser}>
+              <NavLink href='/addCredit' className="justify-content-center text-left pb-1">
+                <Button className='border border-warning text-left font-weight-bold text-warning'
+                        style={{width: '100%' ,backgroundColor: '#292b2c'}}>
+                  Add Credit
+                </Button></NavLink>
+            </NavItem>
+            <NavItem>
+              <NavLink href='/payFares' className="justify-content-center text-left pb-1">
+                <Button className='border border-warning text-left font-weight-bold text-warning'
+                        style={{width: '100%' ,backgroundColor: '#292b2c'}}>
+                  Pay Fares
+                </Button></NavLink>
+            </NavItem>
+            <NavItem>
+              <NavLink href='/' className="justify-content-center text-left pb-1">
+                <Button className='border border-warning text-left font-weight-bold text-warning'
+                        style={{width: '100%' ,backgroundColor: '#292b2c'}} onClick={logoutUser}>
                   Logout
                 </Button></NavLink>
             </NavItem>

@@ -25,7 +25,7 @@ function ManagerHome(props) {
             md={{ size: 6, offset: 3 }}
           >
             <Button href='/generateTimeTable' color='primary' size='lg' block>
-              Generate Timetable
+              Generate Timetables
             </Button>
           </Col>
           <Col
@@ -34,7 +34,7 @@ function ManagerHome(props) {
             md={{ size: 6, offset: 3 }}
           >
             <Button href='/stats' color='primary' size='lg' block>
-              Statistical Report
+              Statistical Reports
             </Button>
           </Col>
           <Col
@@ -62,7 +62,7 @@ function ManagerHome(props) {
             md={{ size: 6, offset: 3 }}
           >
             <Button href='/viewPassenger' color='primary' size='lg' block>
-              View Users
+              View Passengers
             </Button>
           </Col>
         </Row>
