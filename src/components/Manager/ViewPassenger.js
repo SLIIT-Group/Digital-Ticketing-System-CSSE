@@ -1,46 +1,12 @@
 import React, { useState, useEffect } from "react";
 import NavBar from "./Navbar";
-import { Container, Row, Col } from "reactstrap";
-import { withStyles, makeStyles } from "@material-ui/core/styles";
-import Table from "@material-ui/core/Table";
-import TableBody from "@material-ui/core/TableBody";
-import TableCell from "@material-ui/core/TableCell";
-import TableContainer from "@material-ui/core/TableContainer";
-import TableHead from "@material-ui/core/TableHead";
-import TableRow from "@material-ui/core/TableRow";
-import Paper from "@material-ui/core/Paper";
+import { Container, Toast, ToastHeader, CardColumns } from "reactstrap";
 import { connect } from "react-redux";
-import Login from "./Login";
+import PassengerRow from "./passengerRow";
 
 const axios = require("axios");
 
-const StyledTableRow = withStyles((theme) => ({
-  root: {
-    "&:nth-of-type(odd)": {
-      backgroundColor: theme.palette.action.hover,
-    },
-  },
-}))(TableRow);
-
-const StyledTableCell = withStyles((theme) => ({
-  head: {
-    backgroundColor: "#292b2a",
-    color: theme.palette.common.white,
-  },
-  body: {
-    fontSize: 14,
-  },
-}))(TableCell);
-
-const useStyles = makeStyles({
-  table: {
-    minWidth: 700,
-  },
-});
-
 function ViewPassenger(props) {
-
-  const classes = useStyles();
   const [data, setData] = useState([]);
 
   useEffect(() => {
@@ -57,50 +23,28 @@ function ViewPassenger(props) {
   return (
     <React.Fragment>
       <NavBar></NavBar>
-      <Container>
-        <Row style={{ marginTop: "4em", marginBottom: "4em" }}>
-          <Col sm="12" md={{ size: 12, offset: 0 }}>
-            <TableContainer component={Paper}>
-              <Table className={classes.table} aria-label="customized table">
-                <TableHead>
-                  <TableRow>
-                    <StyledTableCell align="center">UserName</StyledTableCell>
-
-                    <StyledTableCell align="center">Email</StyledTableCell>
-                    <StyledTableCell align="center">
-                      Total Amount
-                    </StyledTableCell>
-                  </TableRow>
-                </TableHead>
-                <TableBody>
-                  {data.map((row) => (
-                    <StyledTableRow key={row._id}>
-                      <StyledTableCell
-                        component="th"
-                        scope="row"
-                        align="center"
-                      >
-                        {row.userName}
-                      </StyledTableCell>
-                      <StyledTableCell align="center">
-                        {row.pasEmail}
-                      </StyledTableCell>
-                      <StyledTableCell align="center">
-                        {row.pasAmount}
-                      </StyledTableCell>
-                    </StyledTableRow>
-                  ))}
-                </TableBody>
-              </Table>
-            </TableContainer>
-          </Col>
-        </Row>
+      <Container style={{ margin: "20px 0px", overflowX: "hidden" }}>
+        {setData.length === 0 ? (
+          <div className="p-3 my-2 rounded">
+            <Toast>
+              <ToastHeader style={{ color: "#f4f4f4" }} className="bg-warning">
+                No results found
+              </ToastHeader>
+            </Toast>
+          </div>
+        ) : (
+          <CardColumns>
+            {data.map((token) => (
+              <PassengerRow token={token}></PassengerRow>
+            ))}
+          </CardColumns>
+        )}
       </Container>
     </React.Fragment>
   );
 }
-const mapsStateToProps = state => ({
-  man: state.man
+const mapsStateToProps = (state) => ({
+  man: state.man,
 });
 
 export default connect(mapsStateToProps, null)(ViewPassenger);

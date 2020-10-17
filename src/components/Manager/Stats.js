@@ -37,6 +37,8 @@ function Stats(props) {
     xaxis: {
       categories: ["Passengers", "Inspectors"],
     },
+    
+  
   };
   const series = [
     {
