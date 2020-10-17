@@ -49,7 +49,7 @@ function UserHome(props) {
             md={{ size: 6, offset: 3 }}
           >
             <Button href='/payFares' color='primary' size='lg' block>
-              Pay fares
+              Pay Fares
             </Button>
           </Col>
         </Row>
