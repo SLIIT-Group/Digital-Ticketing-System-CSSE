@@ -50,7 +50,7 @@ const locations = [
   "Vavuniya",
 ];
 
-function GenerateTImeTable(props) {
+function GenerateTimeTable(props) {
   const [startLocation, setStartLocation] = useState("");
   const [endLocation, setEndLocation] = useState("");
   const [routeNumber, setRouteNumber] = useState("");
@@ -118,6 +118,15 @@ function GenerateTImeTable(props) {
           } else {
             swal("sorry", "Data is already saved", "error");
           }
+
+          setStartLocation("");
+          setEndLocation("");
+          setRouteNumber("");
+          setBusNumber("");
+          setStartTime("");
+          setEndTime("");
+          setDistance("");
+          setPrice("");
         })
         .catch((err) => {
           swal("error", "retry", "error");
@@ -275,4 +284,4 @@ const mapsStateToProps = (state) => ({
   man: state.man,
 });
 
-export default connect(mapsStateToProps, null)(GenerateTImeTable);
+export default connect(mapsStateToProps, null)(GenerateTimeTable);

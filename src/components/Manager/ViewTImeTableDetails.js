@@ -40,7 +40,7 @@ const useStyles = makeStyles({
   },
 });
 
-function ViewTImeTableDetails(props) {
+function ViewTimeTableDetails(props) {
   const classes = useStyles();
   const [data, setData] = useState([]); //hooks
 
@@ -158,4 +158,4 @@ const mapsStateToProps = (state) => ({
   man: state.man,
 });
 
-export default connect(mapsStateToProps, null)(ViewTImeTableDetails);
+export default connect(mapsStateToProps, null)(ViewTimeTableDetails);
