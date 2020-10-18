@@ -21,6 +21,7 @@ import {register} from "../../actions/insActions";
 import { clearErrors } from "../../actions/errorActions";
 import swal from "sweetalert";
 import axios from "axios";
+import reg from "../../assets/reg.svg";
 
 
 /*propTypes = {
@@ -142,6 +143,15 @@ function Register(props) {
       <Row style={{ marginTop: '2em', marginBottom: '2em' }}>
         <Col sm='12' md={{ size: 6, offset: 3 }}>
           <Card>
+            <br/>
+            <div style={{ display: 'flex', justifyContent: 'center' }}>
+              <img className='' style={{alignContent : "center"}}
+                   height="20%"
+                   width="20%"
+                   src={reg}
+              />
+            </div>
+            <br />
             {msg ? (
                 <Alert color="danger">{msg}</Alert>
             ) : null}
