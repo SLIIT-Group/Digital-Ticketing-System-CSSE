@@ -57,7 +57,7 @@ function ManagerHome(props) {
               <NavLink style={{ textDecoration: 'none' }} to='/viewInspectors'>
                   <Button className='border border-warning text-center font-weight-bold text-warning'
                           style={{width: '100%' ,backgroundColor: '#ffffff'}}>
-                      <h4 className='font-weight-bold mt-1'>Manage Pins</h4>
+                      <h4 className='font-weight-bold mt-1'>View Inspectors</h4>
                   </Button>
               </NavLink>
           </Col>
