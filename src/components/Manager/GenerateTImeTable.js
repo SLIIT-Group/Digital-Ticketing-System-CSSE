@@ -118,6 +118,15 @@ function GenerateTImeTable(props) {
           } else {
             swal("sorry", "Data is already saved", "error");
           }
+
+          setStartLocation("");
+          setEndLocation("");
+          setRouteNumber("");
+          setBusNumber("");
+          setStartTime("");
+          setEndTime("");
+          setDistance("");
+          setPrice("");
         })
         .catch((err) => {
           swal("error", "retry", "error");
