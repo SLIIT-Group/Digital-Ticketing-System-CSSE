@@ -22,6 +22,8 @@ import {
 } from 'reactstrap';
 import { NavLink } from 'react-router-dom';
 import {useHistory} from "react-router";
+import logo from '../../assets/logo-new.svg';
+
 
 function Login(props) {
   let propTypes = {
@@ -86,6 +88,15 @@ function Login(props) {
       <Row style={{ marginTop: '8em' }}>
         <Col sm='12' md={{ size: 6, offset: 3 }}>
           <Card>
+            <br/>
+            <div style={{ display: 'flex', justifyContent: 'center' }}>
+              <img className='' style={{alignContent : "center"}}
+                   height="50%"
+                   width="50%"
+                   src={logo}
+              />
+            </div>
+            <br />
             {msg ? (
                 <Alert color="danger" className='justify-content-center text-center'>{msg}</Alert>
             ) : null}
@@ -157,7 +168,7 @@ function Login(props) {
         </Col>
       </Row>
       <br/>
-      <Row style={{ marginTop: '8em' }} >
+      <Row style={{ marginTop: '1em' }} >
         <Col sm='6' md={{ size: 6, offset: 3 }}>
           <Card>
             <NavLink  to='/manager/login'>
@@ -180,7 +191,7 @@ function Login(props) {
           </Card>
         </Col>
       </Row>
-
+      <br />
     </Container>
   );
 }

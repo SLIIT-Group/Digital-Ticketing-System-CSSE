@@ -21,6 +21,7 @@ import {
   Input,
 } from 'reactstrap';
 import { NavLink } from 'react-router-dom';
+import logo from "../../assets/logo-new.svg";
 
 function Login(props) {
   let propTypes = {
@@ -87,6 +88,15 @@ function Login(props) {
       <Row style={{ marginTop: '8em' }}>
         <Col sm='12' md={{ size: 6, offset: 3 }}>
           <Card>
+            <br/>
+            <div style={{ display: 'flex', justifyContent: 'center' }}>
+              <img className='' style={{alignContent : "center"}}
+                   height="50%"
+                   width="50%"
+                   src={logo}
+              />
+            </div>
+            <br />
             {msg ? (
                 <Alert color="danger">{msg}</Alert>
             ) : null}
