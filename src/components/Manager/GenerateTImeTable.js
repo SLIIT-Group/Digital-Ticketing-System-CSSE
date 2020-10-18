@@ -50,7 +50,7 @@ const locations = [
   "Vavuniya",
 ];
 
-function GenerateTImeTable(props) {
+function GenerateTimeTable(props) {
   const [startLocation, setStartLocation] = useState("");
   const [endLocation, setEndLocation] = useState("");
   const [routeNumber, setRouteNumber] = useState("");
@@ -284,4 +284,4 @@ const mapsStateToProps = (state) => ({
   man: state.man,
 });
 
-export default connect(mapsStateToProps, null)(GenerateTImeTable);
+export default connect(mapsStateToProps, null)(GenerateTimeTable);
